@@ -82,3 +82,22 @@ cite {
     font-style: normal;
     font-weight: bold;
 }
+
+/* 13. Image float and text wrap */
+img {
+    float: left;
+    margin: 0 15px 15px 0;
+}
+
+/* Clear float after image so elements don't float incorrectly */
+h2, h3 {
+    clear: both;
+}
+
+/* 14. Footer paragraph styles */
+footer p {
+    font-size: 90%;
+    font-weight: bold;
+    text-align: center;
+    margin: 5px 0;
+}
