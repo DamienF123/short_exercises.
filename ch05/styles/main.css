@@ -23,3 +23,12 @@ html {
     color: var(--text-color);
     font-family: arial, sans-serif;
 }
+
+/* 5. style for <body> */
+body {
+    width: 90%;
+    margin: 20px auto; /* Centers the body */
+    border: 5px double var(--main-color);
+    padding: 20px;
+    background-color: #fff; /* Makes content more readable */
+}
