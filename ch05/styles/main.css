@@ -2,3 +2,24 @@ body {
 	font-family: Arial, Helvetica, sans-serif;
     font-size: 100%;
 }
+
+/* 1. Simple reset selector */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 15. Custom CSS variables for colors */
+:root {
+    --main-color: rebeccapurple;
+    --background-color: aliceblue;
+    --text-color: #333;
+}
+
+/* 4. Style for <html> */
+html {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: arial, sans-serif;
+}
