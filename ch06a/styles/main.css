@@ -47,13 +47,13 @@ header {
 		font-size: 130%;
 		font-style: italic;
 	}
-	& img {
+	& header img {
 		float: left;
 		margin: 0 30px;
 	}
 }
 
-/* main layout: two columns */
+/* main layout: three columns */
 main {
 	display: flex;
 	flex-direction: row;
@@ -62,43 +62,47 @@ main {
 }
 
 /* put aside (guest speakers) on the left */
-aside {
-	width: 30%;
-	order: 1; /* appear first (left column) */
+main > aside:first-of-type {
+	width: 25%;
+	order: 1;
 }
-aside h2 {
+main > aside:first-of-type h2 {
 	color: var(--primary-color);
 }
-aside img {
+main > aside:first-of-type img {
 	margin-bottom: .9em;
-	width: 30%; /* optional: make speaker image scale */
+	width: 30%;
 	height: auto;
 }
 
-/* article on the right */
-section {
-	width: 70%;
+/* main content in the center */
+main > section {
+	width: 50%;
 	order: 2;
 }
-section h1 {
-	color: var(--primary-color);
+main > section h1 {
+	color: var(--primary-color)
 }
-
-/* scalable article image floated left */
 article img {
 	border: 1px solid var(--dark);
 	float: left;
 	margin: 0 1em 1em 0;
-	width: 40%; /* scalable width */
+	width: 40%;
 	height: auto;
 }
 
-/* the styles for the footer */
+/* second aside (e.g. event change) on the right */
+main > aside:last-of-type {
+	width: 25%;
+	order: 3;
+}
+
+/* footer styles */
 footer {
 	background-color: var(--primary-color);
-	& p {
-		text-align: center;
-		color: white;
-		padding-bottom: 0; 
-	}
+}
+footer p {
+	text-align: center;
+	color: white;
+	padding-bottom: 0;
 }
