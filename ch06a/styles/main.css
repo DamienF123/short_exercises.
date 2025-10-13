@@ -14,7 +14,7 @@
 	box-sizing: border-box;
 }
 
-/* the default styles for the elements */
+/* base styles */
 body {
 	font-family: Arial, Helvetica, sans-serif;
     font-size: 100%;
@@ -29,7 +29,7 @@ h2 { font-size: 120%; }
 h3 { font-size: 110%; }
 a:focus, a:hover { font-style: italic; }
 
-/* the styles for the header */
+/* header styling */
 header {
 	border-bottom: 3px solid var(--primary-color);
 	background-image: linear-gradient(30deg, 
@@ -53,32 +53,29 @@ header {
 	}
 }
 
-/* main layout: three columns */
+/* 3-column layout */
 main {
 	display: flex;
-	flex-direction: row;
 	gap: 2em; /* space between columns */
-	clear: left;
+	margin-top: 1em;
 }
 
-/* put aside (guest speakers) on the left */
+/* left column (guest speakers) */
 main > aside:first-of-type {
 	width: 25%;
-	order: 1;
 }
 main > aside:first-of-type h2 {
 	color: var(--primary-color);
 }
 main > aside:first-of-type img {
-	margin-bottom: .9em;
-	width: 30%;
+	margin-bottom: 0.9em;
+	width: 100%;
 	height: auto;
 }
 
-/* main content in the center */
+/* center column (main content) */
 main > section {
 	width: 50%;
-	order: 2;
 }
 main > section h1 {
 	color: var(--primary-color)
@@ -91,13 +88,12 @@ article img {
 	height: auto;
 }
 
-/* second aside (e.g. event change) on the right */
+/* right column (event change) */
 main > aside:last-of-type {
 	width: 25%;
-	order: 3;
 }
 
-/* footer styles */
+/* footer*/
 footer {
 	background-color: var(--primary-color);
 }
