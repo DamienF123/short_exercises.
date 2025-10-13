@@ -71,7 +71,7 @@ aside h2 {
 }
 aside img {
 	margin-bottom: .9em;
-	width: 50%; /* optional: make speaker image scale */
+	width: 25%; /* optional: make speaker image scale */
 	height: auto;
 }
 
