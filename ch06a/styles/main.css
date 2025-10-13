@@ -1,4 +1,4 @@
-/* Variables */
+/* VARIABLES */
 :root {
   --primary-color: #931420;
   --accent-color: #f6bb73;
@@ -7,27 +7,29 @@
   --dark: black;
 }
 
-/* Reset */
+/* RESET */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Body styling */
+/* BODY */
 body {
   font-family: Arial, sans-serif;
+  font-size: 16px;
   width: 80%;
   margin: auto;
   border: 3px solid var(--primary-color);
+  background-color: var(--light);
 }
 
-/* Header */
+/* HEADER */
 header {
   display: flex;
   align-items: center;
-  gap: 20px;
   padding: 1em;
+  gap: 1em;
   border-bottom: 3px solid var(--primary-color);
   background-image: linear-gradient(30deg, 
     var(--accent-color), 
@@ -51,39 +53,46 @@ header img {
 }
 
 .shadow {
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
   font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
-/* Layout */
+/* MAIN FLEX LAYOUT */
 main {
   display: flex;
+  flex-direction: row;
   gap: 2em;
   padding: 1em;
 }
 
-/* Columns */
+/* LEFT COLUMN */
 .left-column {
   width: 25%;
 }
 
-.right-column {
-  width: 25%;
+.left-column h2 {
+  color: var(--primary-color);
 }
 
-main > section {
-  width: 50%;
+.left-column h3 {
+  margin-top: 1em;
 }
 
-/* Speaker images */
 .left-column img {
   width: 100%;
   height: auto;
   margin-bottom: 1em;
 }
 
-section h1 {
+/* CENTER COLUMN */
+main > section {
+  width: 50%;
+}
+
+main > section h1 {
+  font-size: 1.5em;
   color: var(--primary-color);
+  margin-top: 1em;
 }
 
 article img {
@@ -94,21 +103,42 @@ article img {
   border: 1px solid var(--dark);
 }
 
-/* Links */
+/* RIGHT COLUMN */
+.right-column {
+  width: 25%;
+}
+
+/* BLOCKQUOTE */
+blockquote {
+  margin: 1em 0;
+  font-style: italic;
+  background-color: #f9f9f9;
+  padding: 1em;
+  border-left: 5px solid var(--primary-color);
+}
+
+/* LINKS */
+a {
+  text-decoration: none;
+  color: var(--primary-color);
+}
+
 a:hover,
 a:focus {
   font-style: italic;
+  text-decoration: underline;
 }
 
-/* Footer */
+/* FOOTER */
 footer {
   background-color: var(--primary-color);
-  padding: 1em;
   color: white;
   text-align: center;
+  padding: 1em;
+  font-size: 0.9em;
 }
 
-/* Responsive */
+/* RESPONSIVE */
 @media (max-width: 768px) {
   main {
     flex-direction: column;
