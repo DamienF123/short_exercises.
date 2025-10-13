@@ -1,159 +1,104 @@
-/* VARIABLES */
+/* variables */
 :root {
-  --primary-color: #931420;
-  --accent-color: #f6bb73;
-  --light-accent: #fffded;
-  --light: white;
-  --dark: black;
+	--primary-color: #931420;
+	--accent-color: #f6bb73;
+	--light-accent: #fffded;
+	--light: white;
+	--dark: black;
 }
 
-/* RESET */
+/* reset */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
 
-/* BODY */
+/* the default styles for the elements */
 body {
-  font-family: Arial, sans-serif;
-  font-size: 16px;
-  width: 80%;
-  margin: auto;
-  border: 3px solid var(--primary-color);
-  background-color: var(--light);
+	font-family: Arial, Helvetica, sans-serif;
+    font-size: 100%;
+    width: 80%;
+    margin: auto;
+    border: 3px solid var(--primary-color);
 }
+header, section, aside, footer { padding: 1em; }
+h1, h2, h3, p, article { padding-bottom: .5em; }
+h1 { font-size: 150%; }
+h2 { font-size: 120%; }
+h3 { font-size: 110%; }
+a:focus, a:hover { font-style: italic; }
 
-/* HEADER */
+/* the styles for the header */
 header {
-  display: flex;
-  align-items: center;
-  padding: 1em;
-  gap: 1em;
-  border-bottom: 3px solid var(--primary-color);
-  background-image: linear-gradient(30deg, 
-    var(--accent-color), 
-    var(--light-accent), 
-    var(--light));
+	border-bottom: 3px solid var(--primary-color);
+	background-image: linear-gradient(30deg, 
+		var(--accent-color) 0%, 
+		var(--light-accent) 25%, 
+		var(--light) 50%, 
+		var(--light-accent) 75%, 
+		var(--accent-color) 100%);
+	& h2 {
+		font-size: 175%;
+		color: var(--primary-color);
+		padding-bottom: 0;
+	}
+	& h3 {
+		font-size: 130%;
+		font-style: italic;
+	}
+	& img {
+		float: left;
+		margin: 0 30px;
+	}
 }
 
-header img {
-  width: 66px;
-  height: auto;
-}
-
-.header-text h2 {
-  font-size: 1.75em;
-  color: var(--primary-color);
-}
-
-.header-text h3 {
-  font-size: 1.3em;
-  font-style: italic;
-}
-
-.shadow {
-  font-weight: bold;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-}
-
-/* MAIN LAYOUT */
+/* main layout: two columns */
 main {
-  display: flex;
-  flex-direction: row;
-  gap: 2em;
-  padding: 1em;
+	display: flex;
+	flex-direction: row;
+	gap: 2em; /* space between columns */
+	clear: left;
 }
 
-/* LEFT COLUMN */
-.left-column {
-  width: 25%;
+/* put aside (guest speakers) on the left */
+aside {
+	width: 30%;
+	order: 1; /* appear first (left column) */
+}
+aside h2 {
+	color: var(--primary-color);
+}
+aside img {
+	margin-bottom: .9em;
+	width: 100%; /* optional: make speaker image scale */
+	height: auto;
 }
 
-.left-column h2 {
-  color: var(--primary-color);
+/* article on the right */
+section {
+	width: 70%;
+	order: 2;
+}
+section h1 {
+	color: var(--primary-color);
 }
 
-.left-column h3 {
-  margin-top: 1em;
-}
-
-.left-column img {
-  width: 75%;
-  height: auto;
-  margin-bottom: 1em;
-}
-
-/* CENTER COLUMN */
-.center-column {
-  width: 50%;
-}
-
-.center-column h1 {
-  font-size: 1.5em;
-  color: var(--primary-color);
-  margin-top: 1em;
-}
-
+/* scalable article image floated left */
 article img {
-  float: right;
-  width: 50%;
-  height: auto;
-  margin-left: 1em;
-  margin-bottom: 1em;
-  border: 1px solid var(--dark);
+	border: 1px solid var(--dark);
+	float: left;
+	margin: 0 1em 1em 0;
+	width: 40%; /* scalable width */
+	height: auto;
 }
 
-/* RIGHT COLUMN */
-.right-column {
-  width: 25%;
-}
-
-/* BLOCKQUOTE */
-blockquote {
-  margin: 1em 0;
-  font-style: italic;
-  background-color: #f9f9f9;
-  padding: 1em;
-  border-left: 5px solid var(--primary-color);
-}
-
-/* LINKS */
-a {
-  text-decoration: none;
-  color: var(--primary-color);
-}
-
-a:hover,
-a:focus {
-  font-style: italic;
-  text-decoration: underline;
-}
-
-/* FOOTER */
+/* the styles for the footer */
 footer {
-  background-color: var(--primary-color);
-  color: white;
-  text-align: center;
-  padding: 1em;
-  font-size: 0.9em;
-}
-
-/* RESPONSIVE */
-@media (max-width: 768px) {
-  main {
-    flex-direction: column;
-  }
-
-  .left-column,
-  .center-column,
-  .right-column {
-    width: 100%;
-  }
-
-  article img {
-    float: none;
-    width: 100%;
-    margin: 1em 0;
-  }
+	background-color: var(--primary-color);
+	& p {
+		text-align: center;
+		color: white;
+		padding-bottom: 0; 
+	}
 }
