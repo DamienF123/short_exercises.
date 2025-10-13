@@ -108,3 +108,22 @@ footer p {
 	color: white;
 	padding-bottom: 0;
 }
+
+/* Responsive layout for smaller screens */
+@media (max-width: 768px) {
+	main {
+		flex-direction: column;
+	}
+
+	main > aside,
+	main > section {
+		width: 100%;
+		order: initial;
+	}
+
+	article img {
+		float: none;
+		width: 100%;
+		margin: 1em 0;
+	}
+}
