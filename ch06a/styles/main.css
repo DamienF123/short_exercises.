@@ -53,33 +53,44 @@ header {
 	}
 }
 
-/* the styles for the main element */
+/* main layout: two columns */
 main {
+	display: flex;
+	flex-direction: row;
+	gap: 2em; /* space between columns */
 	clear: left;
 }
 
-/* the styles for the section */
-section {
-	& h1 {
-		color: var(--primary-color);
-	}
-}
-
-/* the styles for the article */
-article {
-	& img {
-		border: 1px solid var(--dark);
-	}
-}
-
-/* the styles for the aside */
+/* put aside (guest speakers) on the left */
 aside {
-	& h2 {
-		color: var(--primary-color);
-	}
-	& img {
-		margin-bottom: .9em;
-	}
+	width: 30%;
+	order: 1; /* appear first (left column) */
+}
+aside h2 {
+	color: var(--primary-color);
+}
+aside img {
+	margin-bottom: .9em;
+	width: 100%; /* optional: make speaker image scale */
+	height: auto;
+}
+
+/* article on the right */
+section {
+	width: 70%;
+	order: 2;
+}
+section h1 {
+	color: var(--primary-color);
+}
+
+/* scalable article image floated left */
+article img {
+	border: 1px solid var(--dark);
+	float: left;
+	margin: 0 1em 1em 0;
+	width: 40%; /* scalable width */
+	height: auto;
 }
 
 /* the styles for the footer */
