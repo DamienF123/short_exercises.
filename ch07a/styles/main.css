@@ -106,6 +106,7 @@ footer {
 aside nav {
 	background-color: var(--primary-color);
 	margin-top: 1em;
+	border-radius: 4px;
 }
 
 aside nav ul {
@@ -113,11 +114,12 @@ aside nav ul {
 }
 
 aside nav li a {
-	display: block;
+	display: block; /* Make the whole area clickable */
 	padding: 0.75em 1em;
 	color: white;
 	text-decoration: none;
 	font-weight: bold;
+	transition: background-color 0.3s, color 0.3s;
 }
 
 aside nav li a:hover {
