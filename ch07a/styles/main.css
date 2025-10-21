@@ -101,3 +101,37 @@ footer {
 		padding-bottom: 0; 
 	}
 }
+
+/* Navigation menu styles */
+aside nav {
+	background-color: var(--primary-color);
+	margin-top: 1em;
+}
+
+aside nav ul {
+	list-style: none;
+}
+
+aside nav li a {
+	display: block;
+	padding: 0.75em 1em;
+	color: white;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+aside nav li a:hover {
+	color: var(--accent-color);
+}
+
+/* Current page link styles */
+aside nav li a.current {
+	background-color: var(--accent-color);
+	color: black;
+	cursor: default;
+}
+
+aside nav li a.current:hover {
+	color: black;
+	font-style: normal;
+}
