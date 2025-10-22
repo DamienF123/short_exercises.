@@ -14,44 +14,57 @@
 	box-sizing: border-box;
 }
 
-/* the default styles for the elements */
+/* base styles */
 body {
 	font-family: Arial, Helvetica, sans-serif;
-    font-size: 100%;
-    width: 80%;
-    margin: auto;
-    border: 3px solid var(--primary-color);
+	font-size: 100%;
+	width: 80%;
+	margin: auto;
+	border: 3px solid var(--primary-color);
 }
-header, section, aside, footer { padding: 1em; }
-h1, h2, h3, p, article { padding-bottom: .5em; }
+
+header, section, aside, footer {
+	padding: 1em;
+}
+
+h1, h2, h3, p, article {
+	padding-bottom: .5em;
+}
+
 h1 { font-size: 150%; }
 h2 { font-size: 120%; }
 h3 { font-size: 110%; }
-a:focus, a:hover { font-style: italic; }
 
-/* the styles for the header */
+a:focus, a:hover {
+	font-style: italic;
+}
+
+/* header */
 header {
 	border-bottom: 3px solid var(--primary-color);
-	background-image: linear-gradient(30deg, 
-		var(--accent-color) 0%, 
-		var(--light-accent) 25%, 
-		var(--light) 50%, 
-		var(--light-accent) 75%, 
+	background-image: linear-gradient(30deg,
+		var(--accent-color) 0%,
+		var(--light-accent) 25%,
+		var(--light) 50%,
+		var(--light-accent) 75%,
 		var(--accent-color) 100%);
-	& h2 {
-		font-size: 175%;
-		color: var(--primary-color);
-		padding-bottom: 0;
-	}
-	& h3 {
-		font-size: 130%;
-		font-style: italic;
-	}
-	& img {
-		float: left;
-		margin: 0 30px;
-		width: clamp(40px, 15%, 66px);
-	}
+}
+
+header h2 {
+	font-size: 175%;
+	color: var(--primary-color);
+	padding-bottom: 0;
+}
+
+header h3 {
+	font-size: 130%;
+	font-style: italic;
+}
+
+header img {
+	float: left;
+	margin: 0 30px;
+	width: clamp(40px, 15%, 66px);
 }
 
 /* main layout */
@@ -60,47 +73,51 @@ main {
 	display: flex;
 }
 
-/* section styles */
+/* section */
 section {
 	order: 2;
 	flex-basis: 75%;
-	& h1 {
-		color: var(--primary-color);
-		margin: 0;
-	}
 }
 
-/* article styles */
-article {
-	& img {
-		float: left;
-		margin: .25em 1em 1em 0;
-		border: 1px solid var(--dark);
-		width: min(100%, 225px);
-	}
+section h1 {
+	color: var(--primary-color);
+	margin: 0;
 }
 
-/* aside styles */
+/* article */
+article img {
+	float: left;
+	margin: .25em 1em 1em 0;
+	border: 1px solid var(--dark);
+	width: min(100%, 225px);
+}
+
+/* aside */
 aside {
 	order: 1;
 	flex-basis: 25%;
-	& h2 {
-		color: var(--primary-color);
-	}
-	& img {
-		margin-bottom: .9em;
-	}
 }
 
-/* footer styles */
+aside h2 {
+	color: var(--primary-color);
+}
+
+aside img {
+	margin-bottom: .9em;
+}
+
+/* footer */
 footer {
 	background-color: var(--primary-color);
-	& p {
-		text-align: center;
-		color: white;
-		padding-bottom: 0; 
-	}
 }
+
+footer p {
+	text-align: center;
+	color: white;
+	padding-bottom: 0;
+}
+
+/* ------------------ NAVIGATION ------------------ */
 
 .navbar {
 	background-color: var(--primary-color);
@@ -126,12 +143,13 @@ footer {
 	font-weight: normal;
 }
 
+/* hover effect */
 .menu a:hover,
 .menu a:focus {
 	font-style: italic;
 }
 
-/* Current page link */
+/* current page styling */
 .menu a.current {
 	color: var(--accent-color);
 	font-weight: bold;
@@ -139,7 +157,7 @@ footer {
 	cursor: default;
 }
 
-/* Submenu styles */
+/* Submenu (Guest Speakers) */
 .submenu {
 	display: none;
 	position: absolute;
@@ -148,22 +166,50 @@ footer {
 	background-color: var(--primary-color);
 	list-style: none;
 	padding: 0;
+	margin: 0;
 	z-index: 1000;
-	min-width: 200px;
-}
-
-.menu li:hover > .submenu {
-	display:block;
-}
-
-.submenu li a {
-	padding: 0.75em 1em;
+	display: flex;         /* horizontal layout */
+	flex-direction: row;
 	white-space: nowrap;
 }
 
-/* Responsive: wrap nav items */
+.menu li:hover > .submenu {
+	display: flex;
+}
+
+.submenu li {
+	position: relative;
+}
+
+.submenu li a {
+	display: block;
+	padding: 0.75em 1em;
+	color: white;
+	text-decoration: none;
+	font-weight: normal;
+}
+
+.submenu li a:hover,
+.submenu li a:focus {
+	font-style: italic;
+}
+
+.submenu li a.current {
+	color: var(--accent-color);
+	font-weight: bold;
+	font-style: normal;
+	cursor: default;
+}
+
+/* Responsive layout */
 @media (max-width: 600px) {
 	.menu {
 		flex-direction: column;
+	}
+
+	.submenu {
+		position: static;
+		flex-direction: column;
+		width: 100%;
 	}
 }
