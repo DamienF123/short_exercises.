@@ -1,3 +1,4 @@
+/* variables */
 :root {
 	--primary-color: #931420;
 	--accent-color: #f6bb73;
@@ -6,174 +7,131 @@
 	--dark: black;
 }
 
-/* Reset */
+/* reset */
 * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
 }
 
-/* Base styles */
+/* the default styles for the elements */
 body {
 	font-family: Arial, Helvetica, sans-serif;
-	font-size: 100%;
-	width: 80%;
-	margin: auto;
-	border: 3px solid var(--primary-color);
+    font-size: 100%;
+    width: 80%;
+    margin: auto;
+    border: 3px solid var(--primary-color);
 }
-
-header, section, aside, footer {
-	padding: 1em;
-}
-
-h1, h2, h3, p, article {
-	padding-bottom: .5em;
-}
-
+header, section, aside, footer { padding: 1em; }
+h1, h2, h3, p, article { padding-bottom: .5em; }
 h1 { font-size: 150%; }
 h2 { font-size: 120%; }
 h3 { font-size: 110%; }
+a:focus, a:hover { font-style: italic; }
 
-a:focus, a:hover {
-	font-style: italic;
-}
-
-/* Header */
+/* the styles for the header */
 header {
 	border-bottom: 3px solid var(--primary-color);
-	background-image: linear-gradient(30deg,
-		var(--accent-color) 0%,
-		var(--light-accent) 25%,
-		var(--light) 50%,
-		var(--light-accent) 75%,
+	background-image: linear-gradient(30deg, 
+		var(--accent-color) 0%, 
+		var(--light-accent) 25%, 
+		var(--light) 50%, 
+		var(--light-accent) 75%, 
 		var(--accent-color) 100%);
-}
-header h2 {
-	font-size: 175%;
-	color: var(--primary-color);
-	padding-bottom: 0;
-}
-header h3 {
-	font-size: 130%;
-	font-style: italic;
-}
-header img {
-	float: left;
-	margin: 0 30px;
-	width: clamp(40px, 15%, 66px);
+	& h2 {
+		font-size: 175%;
+		color: var(--primary-color);
+		padding-bottom: 0;
+	}
+	& h3 {
+		font-size: 130%;
+		font-style: italic;
+	}
+	& img {
+		float: left;
+		margin: 0 30px;
+		width: clamp(40px, 15%, 66px);
+	}
 }
 
-/* Layout */
+/* the styles for the main element */
 main {
 	clear: left;
 	display: flex;
 }
+
+/* the styles for the section */
 section {
 	order: 2;
 	flex-basis: 75%;
+	& h1 {
+		color: var(--primary-color);
+		margin: 0;
+	}
 }
+
+/* the styles for the article */
+article {
+	& img {
+		float: left;
+		margin: .25em 1em 1em 0;
+		border: 1px solid var(--dark);
+		width: min(100%, 225px);
+	}
+}
+
+/* the styles for the aside */
 aside {
 	order: 1;
 	flex-basis: 25%;
-}
-article img {
-	float: left;
-	margin: .25em 1em 1em 0;
-	border: 1px solid var(--dark);
-	width: min(100%, 225px);
+	& h2 {
+		color: var(--primary-color);
+	}
+	& img {
+		margin-bottom: .9em;
+	}
 }
 
-/* Footer */
+/* the styles for the footer */
 footer {
 	background-color: var(--primary-color);
-}
-footer p {
-	text-align: center;
-	color: white;
-	padding-bottom: 0;
+	& p {
+		text-align: center;
+		color: white;
+		padding-bottom: 0; 
+	}
 }
 
-/* =========================
-   NAVIGATION BAR
-   ========================= */
-.navbar {
+/* Navigation menu styles */
+aside nav {
 	background-color: var(--primary-color);
+	margin-top: 1em;
 }
 
-.menu {
-	display: flex;
-	flex-wrap: wrap;
+aside nav ul {
 	list-style: none;
-	margin: 0;
-	padding: 0;
 }
 
-.menu li {
-	position: relative;
-}
-
-.menu a {
+aside nav li a {
 	display: block;
-	padding: 1em;
+	padding: 0.75em 1em;
 	color: white;
 	text-decoration: none;
-	font-weight: normal;
-}
-
-/* Hover effect */
-.menu a:hover,
-.menu a:focus {
-	font-style: italic;
-}
-
-/* Current page styling */
-.menu a.current {
-	color: var(--accent-color);
 	font-weight: bold;
-	font-style: normal;
+}
+
+aside nav li a:hover {
+	color: var(--accent-color);
+}
+
+/* Current page link styles */
+aside nav li a.current {
+	background-color: var(--accent-color);
+	color: black;
 	cursor: default;
 }
 
-/* Submenu (vertical dropdown) */
-.submenu {
-	display: none;
-	position: absolute;
-	top: 100%;
-	left: 0;
-	background-color: var(--primary-color);
-	list-style: none;
-	padding: 0;
-	min-width: 220px;
-	box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-	z-index: 10;
-}
-
-.menu li:hover > .submenu {
-	display: block;
-}
-
-.submenu li a {
-	padding: 0.75em 1em;
-	white-space: nowrap;
-	color: white;
-	text-decoration: none;
-	font-weight: normal;
-}
-
-.submenu li a:hover {
-	background-color: var(--accent-color);
+aside nav li a.current:hover {
 	color: black;
-	font-style: italic;
-}
-
-/* Responsive nav */
-@media (max-width: 600px) {
-	.menu {
-		flex-direction: column;
-	}
-
-	.submenu {
-		position: static;
-		box-shadow: none;
-	}
+	font-style: normal;
 }
