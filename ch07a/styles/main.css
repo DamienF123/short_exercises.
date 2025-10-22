@@ -1,4 +1,3 @@
-/* variables */
 :root {
 	--primary-color: #931420;
 	--accent-color: #f6bb73;
@@ -7,14 +6,14 @@
 	--dark: black;
 }
 
-/* reset */
+/* Reset */
 * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
 }
 
-/* base styles */
+/* Base styles */
 body {
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 100%;
@@ -39,7 +38,7 @@ a:focus, a:hover {
 	font-style: italic;
 }
 
-/* header */
+/* Header */
 header {
 	border-bottom: 3px solid var(--primary-color);
 	background-image: linear-gradient(30deg,
@@ -49,42 +48,34 @@ header {
 		var(--light-accent) 75%,
 		var(--accent-color) 100%);
 }
-
 header h2 {
 	font-size: 175%;
 	color: var(--primary-color);
 	padding-bottom: 0;
 }
-
 header h3 {
 	font-size: 130%;
 	font-style: italic;
 }
-
 header img {
 	float: left;
 	margin: 0 30px;
 	width: clamp(40px, 15%, 66px);
 }
 
-/* main layout */
+/* Layout */
 main {
 	clear: left;
 	display: flex;
 }
-
-/* section */
 section {
 	order: 2;
 	flex-basis: 75%;
 }
-
-section h1 {
-	color: var(--primary-color);
-	margin: 0;
+aside {
+	order: 1;
+	flex-basis: 25%;
 }
-
-/* article */
 article img {
 	float: left;
 	margin: .25em 1em 1em 0;
@@ -92,33 +83,19 @@ article img {
 	width: min(100%, 225px);
 }
 
-/* aside */
-aside {
-	order: 1;
-	flex-basis: 25%;
-}
-
-aside h2 {
-	color: var(--primary-color);
-}
-
-aside img {
-	margin-bottom: .9em;
-}
-
-/* footer */
+/* Footer */
 footer {
 	background-color: var(--primary-color);
 }
-
 footer p {
 	text-align: center;
 	color: white;
 	padding-bottom: 0;
 }
 
-/* ------------------ NAVIGATION ------------------ */
-
+/* =========================
+   NAVIGATION BAR
+   ========================= */
 .navbar {
 	background-color: var(--primary-color);
 }
@@ -131,7 +108,7 @@ footer p {
 	padding: 0;
 }
 
-.menu > li {
+.menu li {
 	position: relative;
 }
 
@@ -143,13 +120,13 @@ footer p {
 	font-weight: normal;
 }
 
-/* hover effect */
+/* Hover effect */
 .menu a:hover,
 .menu a:focus {
 	font-style: italic;
 }
 
-/* current page styling */
+/* Current page styling */
 .menu a.current {
 	color: var(--accent-color);
 	font-weight: bold;
@@ -157,7 +134,7 @@ footer p {
 	cursor: default;
 }
 
-/* Submenu (Guest Speakers) */
+/* Submenu (vertical dropdown) */
 .submenu {
 	display: none;
 	position: absolute;
@@ -166,42 +143,30 @@ footer p {
 	background-color: var(--primary-color);
 	list-style: none;
 	padding: 0;
-	margin: 0;
-	z-index: 1000;
-	display: flex;         /* horizontal layout */
-	flex-direction: row;
-	white-space: nowrap;
+	min-width: 220px;
+	box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+	z-index: 10;
 }
 
 .menu li:hover > .submenu {
-	display: flex;
-}
-
-.submenu li {
-	position: relative;
+	display: block;
 }
 
 .submenu li a {
-	display: block;
 	padding: 0.75em 1em;
+	white-space: nowrap;
 	color: white;
 	text-decoration: none;
 	font-weight: normal;
 }
 
-.submenu li a:hover,
-.submenu li a:focus {
+.submenu li a:hover {
+	background-color: var(--accent-color);
+	color: black;
 	font-style: italic;
 }
 
-.submenu li a.current {
-	color: var(--accent-color);
-	font-weight: bold;
-	font-style: normal;
-	cursor: default;
-}
-
-/* Responsive layout */
+/* Responsive nav */
 @media (max-width: 600px) {
 	.menu {
 		flex-direction: column;
@@ -209,7 +174,6 @@ footer p {
 
 	.submenu {
 		position: static;
-		flex-direction: column;
-		width: 100%;
+		box-shadow: none;
 	}
 }
