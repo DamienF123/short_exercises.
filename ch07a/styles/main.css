@@ -14,7 +14,7 @@
 	box-sizing: border-box;
 }
 
-/* default styles */
+/* the default styles for the elements */
 body {
 	font-family: Arial, Helvetica, sans-serif;
     font-size: 100%;
@@ -29,7 +29,7 @@ h2 { font-size: 120%; }
 h3 { font-size: 110%; }
 a:focus, a:hover { font-style: italic; }
 
-/* header */
+/* the styles for the header */
 header {
 	border-bottom: 3px solid var(--primary-color);
 	background-image: linear-gradient(30deg, 
@@ -54,13 +54,13 @@ header {
 	}
 }
 
-/* main */
+/* the styles for the main element */
 main {
 	clear: left;
 	display: flex;
 }
 
-/* section */
+/* the styles for the section */
 section {
 	order: 2;
 	flex-basis: 75%;
@@ -70,7 +70,7 @@ section {
 	}
 }
 
-/* article */
+/* the styles for the article */
 article {
 	& img {
 		float: left;
@@ -80,7 +80,19 @@ article {
 	}
 }
 
-/* footer */
+/* the styles for the aside */
+aside {
+	order: 1;
+	flex-basis: 25%;
+	& h2 {
+		color: var(--primary-color);
+	}
+	& img {
+		margin-bottom: .9em;
+	}
+}
+
+/* the styles for the footer */
 footer {
 	background-color: var(--primary-color);
 	& p {
@@ -90,76 +102,38 @@ footer {
 	}
 }
 
-/* NAVBAR STYLES */
-.navbar {
+/* Navigation menu styles */
+aside nav {
 	background-color: var(--primary-color);
+	margin-top: 1em;
+	border-radius: 4px;
 }
 
-.menu {
-	display: flex;
-	flex-wrap: wrap;
+aside nav ul {
 	list-style: none;
-	margin: 0;
-	padding: 0;
 }
 
-.menu > li {
-	position: relative;
-}
-
-.menu > li > a {
-	display: block;
-	padding: 1em;
-	color: white;
-	text-decoration: none;
-	font-weight: normal;
-}
-
-.submenu {
-	display: none;
-	position: absolute;
-	top: 100%;
-	left: 0;
-	background-color: var(--primary-color);
-	list-style: none;
-	min-width: 220px;
-	z-index: 1000;
-}
-
-.submenu li a {
-	display: block;
+aside nav li a {
+	display: block; /* Make the whole area clickable */
 	padding: 0.75em 1em;
 	color: white;
 	text-decoration: none;
-}
-
-/* Show submenu on hover */
-.menu li:hover .submenu {
-	display: block;
-}
-
-/* Hover styles */
-.menu a:hover,
-.menu a:focus {
-	font-style: italic;
-}
-
-/* Current page link */
-.menu a.current {
 	font-weight: bold;
+	transition: background-color 0.3s, color 0.3s;
+}
+
+aside nav li a:hover {
 	color: var(--accent-color);
-	font-style: normal;
+}
+
+/* Current page link styles */
+aside nav li a.current {
+	background-color: var(--accent-color);
+	color: black;
 	cursor: default;
 }
 
-/* Make the full link area clickable */
-.menu a {
-	width: 100%;
-}
-
-/* Responsive wrap */
-@media (max-width: 600px) {
-	.menu {
-		flex-direction: column;
-	}
+aside nav li a.current:hover {
+	color: black;
+	font-style: normal;
 }
