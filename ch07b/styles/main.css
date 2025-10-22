@@ -14,7 +14,7 @@
 	box-sizing: border-box;
 }
 
-/* default styles */
+/* base styles */
 body {
 	font-family: Arial, Helvetica, sans-serif;
     font-size: 100%;
@@ -54,10 +54,11 @@ header {
 	}
 }
 
-/* main */
+/* main layout */
 main {
 	clear: left;
 	display: flex;
+	flex-direction: column;
 }
 
 /* section */
@@ -95,6 +96,7 @@ footer {
 	background-color: var(--primary-color);
 }
 
+/* Menu: horizontally spaced items across full width */
 .menu {
 	display: flex;
 	flex-wrap: wrap;
@@ -104,6 +106,8 @@ footer {
 }
 
 .menu > li {
+	flex: 1; /* Equal width for each item */
+	text-align: center;
 	position: relative;
 }
 
@@ -113,8 +117,10 @@ footer {
 	color: white;
 	text-decoration: none;
 	font-weight: normal;
+	width: 100%; /* Full clickable area */
 }
 
+/* Submenu styles */
 .submenu {
 	display: none;
 	position: absolute;
@@ -131,6 +137,7 @@ footer {
 	padding: 0.75em 1em;
 	color: white;
 	text-decoration: none;
+	text-align: left;
 }
 
 /* Show submenu on hover */
@@ -138,23 +145,18 @@ footer {
 	display: block;
 }
 
-/* Hover styles */
+/* Link hover/focus */
 .menu a:hover,
 .menu a:focus {
 	font-style: italic;
 }
 
-/* Current page link */
+/* Current page link style */
 .menu a.current {
 	font-weight: bold;
 	color: var(--accent-color);
 	font-style: normal;
 	cursor: default;
-}
-
-/* Make the full link area clickable */
-.menu a {
-	width: 100%;
 }
 
 /* Responsive wrap */
