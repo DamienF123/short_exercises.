@@ -61,7 +61,17 @@ main {
 	flex-direction: column;
 }
 
-/* section */
+/* sidebar styles */
+aside {
+	order: 1;
+	flex-basis: 25%;
+}
+
+aside h2 {
+	color: var(--primary-color);
+}
+
+/* section (main content) styles */
 section {
 	order: 2;
 	flex-basis: 75%;
@@ -71,7 +81,7 @@ section {
 	}
 }
 
-/* article */
+/* article image*/
 article {
 	& img {
 		float: left;
@@ -103,6 +113,7 @@ footer {
 	list-style: none;
 	margin: 0;
 	padding: 0;
+	width: 100%;
 }
 
 .menu > li {
