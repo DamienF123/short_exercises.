@@ -59,6 +59,7 @@ main {
 	clear: left;
 	display: flex;
 	flex-direction: column;
+	gap: 1em;
 }
 
 /* sidebar styles */
