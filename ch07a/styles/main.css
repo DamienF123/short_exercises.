@@ -54,13 +54,13 @@ header {
 	}
 }
 
-/* the styles for the main element */
+/* main layout */
 main {
 	clear: left;
 	display: flex;
 }
 
-/* the styles for the section */
+/* section styles */
 section {
 	order: 2;
 	flex-basis: 75%;
@@ -70,7 +70,7 @@ section {
 	}
 }
 
-/* the styles for the article */
+/* article styles */
 article {
 	& img {
 		float: left;
@@ -80,7 +80,7 @@ article {
 	}
 }
 
-/* the styles for the aside */
+/* aside styles */
 aside {
 	order: 1;
 	flex-basis: 25%;
@@ -92,7 +92,7 @@ aside {
 	}
 }
 
-/* the styles for the footer */
+/* footer styles */
 footer {
 	background-color: var(--primary-color);
 	& p {
@@ -102,38 +102,68 @@ footer {
 	}
 }
 
-/* Navigation menu styles */
-aside nav {
+.navbar {
 	background-color: var(--primary-color);
-	margin-top: 1em;
-	border-radius: 4px;
 }
 
-aside nav ul {
+.menu {
+	display: flex;
+	flex-wrap: wrap;
 	list-style: none;
+	margin: 0;
+	padding: 0;
 }
 
-aside nav li a {
-	display: block; /* Make the whole area clickable */
-	padding: 0.75em 1em;
+.menu > li {
+	position: relative;
+}
+
+.menu a {
+	display: block;
+	padding: 1em;
 	color: white;
 	text-decoration: none;
-	font-weight: bold;
-	transition: background-color 0.3s, color 0.3s;
+	font-weight: normal;
 }
 
-aside nav li a:hover {
+.menu a:hover,
+.menu a:focus {
+	font-style: italic;
+}
+
+/* Current page link */
+.menu a.current {
 	color: var(--accent-color);
-}
-
-/* Current page link styles */
-aside nav li a.current {
-	background-color: var(--accent-color);
-	color: black;
+	font-weight: bold;
+	font-style: normal;
 	cursor: default;
 }
 
-aside nav li a.current:hover {
-	color: black;
-	font-style: normal;
+/* Submenu styles */
+.submenu {
+	display: none;
+	position: absolute;
+	top: 100%;
+	left: 0;
+	background-color: var(--primary-color);
+	list-style: none;
+	padding: 0;
+	z-index: 1000;
+	min-width: 200px;
+}
+
+.menu li:hover > .submenu {
+	display:block;
+}
+
+.submenu li a {
+	padding: 0.75em 1em;
+	white-space: nowrap;
+}
+
+/* Responsive: wrap nav items */
+@media (max-width: 600px) {
+	.menu {
+		flex-direction: column;
+	}
 }
