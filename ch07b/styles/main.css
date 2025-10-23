@@ -54,35 +54,34 @@ header {
 	}
 }
 
-/* main layout */
+/* Two-column main layout */
 main.content-wrapper {
 	clear: left;
 	display: flex;
 	flex-direction: row; /* side-by-side layout */
 	align-items: flex-start;
-	gap: 1em;
+	gap: 1.5em;
 }
 
-/* sidebar styles */
+/* Left column (Our Mission) */
 aside.left-column {
-	flex: 1 1 25%
+	flex: 0 0 25%
 }
 
 aside.left-column h2 {
 	color: var(--primary-color);
 }
 
-/* main content styles */
+/* Right column (Main content) */
 section.main-content {
-	flex: 3 1 70%;
+	flex: 1;
 }
 
 section.main-content h1 {
 	color: var(--primary-color);
-	margin: 0;
 }
 
-/* article image*/
+/* Article image*/
 article {
 	& img {
 		float: left;
@@ -102,19 +101,16 @@ footer {
 	}
 }
 
-/* NAVBAR STYLES */
+/* Navbar */
 .navbar {
 	background-color: var(--primary-color);
 }
 
-/* Menu: horizontally spaced items across full width */
 .menu {
 	display: flex;
-	flex-wrap: wrap;
 	list-style: none;
 	margin: 0;
 	padding: 0;
-	width: 100%;
 }
 
 .menu > li {
@@ -128,11 +124,16 @@ footer {
 	padding: 1em;
 	color: white;
 	text-decoration: none;
-	font-weight: normal;
-	width: 100%;
+}
+.menu a:hover,
+.menu a:focus {
+	font-style: italic;
+}
+.menu a.current {
+	font-weight: bold;
+	color: var(--accent-color)
 }
 
-/* Submenu styles */
 .submenu {
 	display: none;
 	position: absolute;
@@ -141,7 +142,6 @@ footer {
 	background-color: var(--primary-color);
 	list-style: none;
 	min-width: 220px;
-	z-index: 1000;
 }
 
 .submenu li a {
@@ -152,23 +152,8 @@ footer {
 	text-align: left;
 }
 
-/* Show submenu on hover */
 .menu li:hover .submenu {
 	display: block;
-}
-
-/* Link hover/focus */
-.menu a:hover,
-.menu a:focus {
-	font-style: italic;
-}
-
-/* Current page link style */
-.menu a.current {
-	font-weight: bold;
-	color: var(--accent-color);
-	font-style: normal;
-	cursor: default;
 }
 
 /* Responsive wrap */
