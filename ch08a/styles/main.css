@@ -7,7 +7,6 @@
    --dark: black;
 }
 
-
 /* reset */
 * {
    margin: 0;
@@ -15,8 +14,7 @@
    box-sizing: border-box;
 }
 
-
-/* the default styles for the elements */
+/* default styles */
 body {
    font-family: Arial, Helvetica, sans-serif;
    font-size: 100%;
@@ -24,6 +22,7 @@ body {
    margin: auto;
    border: 3px solid var(--primary-color);
 }
+
 header, section, aside, footer { padding: 1em; }
 h1, h2, h3, p, article { padding-bottom: .5em; }
 h1 { font-size: 150%; }
@@ -31,8 +30,7 @@ h2 { font-size: 120%; }
 h3 { font-size: 110%; }
 a:focus, a:hover { font-style: italic; }
 
-
-/* the styles for the header */
+/* header styles */
 header {
    border-bottom: 3px solid var(--primary-color);
    background-image: linear-gradient(30deg,
@@ -42,41 +40,43 @@ header {
        var(--light-accent) 75%,
        var(--accent-color) 100%);
 }
+
 header h2 {
    font-size: 175%;
    color: var(--primary-color);
    padding-bottom: 0;
 }
+
+/* hide second h2 by default for mobile */
+header h2:nth-of-type(2) {
+    display: none;
+}
+
 header h3 {
    font-size: 130%;
    font-style: italic;
 }
+
 header img {
    float: left;
    margin: 0 30px;
    width: clamp(40px, 15%, 66px);
 }
 
-
-/* the styles for the main element */
+/* main layout - mobile first */
 main {
-   clear: left;
-   display: flex;
+    display: flex;
+    flex-direction: column; /* stack vertically on mobile */
+    clear: left;
 }
 
-
-/* the styles for the section */
-section {
-   order: 2;
-   flex-basis: 75%;
-}
+/* section styles - remove order/flex-basis for mobile */
 section h1 {
    color: var(--primary-color);
    margin: 0;
 }
 
-
-/* the styles for the article */
+/* article styles */
 article img {
    float: left;
    margin: .25em 1em 1em 0;
@@ -84,43 +84,109 @@ article img {
    width: min(100%, 250px);
 }
 
-
-/* the styles for the aside (left column) */
+/* aside styles - left column */
 aside {
-   order: 1;
-   flex-basis: 25%;
-   background-color: var(--light); /* left column background = white */
+   background-color: var(--light); /* white background on mobile */
 }
+
 aside h2 {
    color: var(--primary-color);
 }
+
 aside img {
    margin-bottom: .9em;
 }
 
-/* guest speakers menu inside aside */
+/* guest speakers menu in aside */
 aside nav {
-   background-color: var(--primary-color); /* menu background = primary color */
+   background-color: var(--primary-color);
    padding: 1em;
-   border-radius: 4px; /* optional rounded corners */
+   border-radius: 4px;
 }
+
 aside nav ul {
    list-style: none;
    padding: 0;
 }
+
 aside nav a {
-   color: var(--light); /* white text */
+   color: var(--light);
    display: block;
    text-decoration: none;
    padding: 0.5em 0;
    font-weight: bold;
 }
+
 aside nav a:hover {
-   color: var(--accent-color); /* hover effect */
+   color: var(--accent-color);
 }
 
-
-/* the styles for the footer */
+/* footer styles */
 footer {
-   background-color: var(--primary);
+   background-color: var(--primary-color);
+}
+
+footer p {
+   text-align: center;
+   color: white;
+   padding-bottom: 0;
+}
+
+/* main navigation menu outside aside */
+nav {
+   background-color: var(--primary-color);
+}
+
+nav ul {
+   display: flex;
+   flex-direction: column;
+   list-style: none;
+}
+
+nav a {
+   display: block;
+   padding: .75em;
+   text-decoration: none;
+   font-weight: bold;
+   color: var(--light);
+}
+
+nav a:hover {
+   color: var(--accent-color);
+}
+
+nav a.current {
+   background-color: var(--accent-color);
+   color: var(--dark);
+}
+
+nav a.current:hover {
+   font-style: normal;
+}
+
+/* ------------------------ */
+/* Media Queries */
+
+/* tablet/desktop layout */
+@media screen and (min-width: 768px) {
+    main {
+        flex-direction: row; /* side-by-side layout */
+    }
+
+    section {
+        order: 2;
+        flex-basis: 75%;
+    }
+
+    aside {
+        order: 1;
+        flex-basis: 25%;
+    }
+}
+
+/* display second header h2 on larger screens */
+@media screen and (min-width: 600px) { /* adjust 600px to your observed width */
+    header h2:nth-of-type(2) {
+        display: block;
+    }
 }
