@@ -1,205 +1,136 @@
-/* ================================
-   VARIABLES
-================================ */
 :root {
-  --primary-color: #931420;
-  --accent-color: #f6bb73;
+  --primary: #931420;
+  --accent: #f6bb73;
   --light-accent: #fffded;
-  --light: white;
-  --dark: black;
+  --white: #fff;
+  --black: #000;
 }
 
-/* ================================
-   RESET
-================================ */
+/* RESET */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* ================================
-   DEFAULT STYLES
-================================ */
 body {
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 100%;
-  max-width: 1200px;
+  font-family: Arial, sans-serif;
+  line-height: 1.5;
   margin: 0 auto;
-  border: 3px solid var(--primary-color);
+  max-width: 1200px;
+  border: 3px solid var(--primary);
 }
 
-header, section, aside, footer { padding: 1em; }
-h1, h2, h3, p, article, blockquote { padding-bottom: .5em; }
-h1 { font-size: 150%; }
-h2 { font-size: 120%; }
-h3 { font-size: 110%; }
-a:focus, a:hover { font-style: italic; }
-
-/* ================================
-   HEADER
-================================ */
+/* HEADER */
 header {
-  border-bottom: 3px solid var(--primary-color);
-  background-image: linear-gradient(30deg, 
-      var(--accent-color) 0%, 
-      var(--light-accent) 25%, 
-      var(--light) 50%, 
-      var(--light-accent) 75%, 
-      var(--accent-color) 100%);
   text-align: center;
+  background: linear-gradient(30deg, var(--accent), var(--light-accent), var(--white));
+  border-bottom: 3px solid var(--primary);
+  padding: 1em;
 }
 
 header h2 {
-  font-size: 175%;
-  color: var(--primary-color);
+  color: var(--primary);
+  font-size: 1.75em;
 }
+header h3 { font-style: italic; }
 
-header h3 {
-  font-size: 130%;
-  font-style: italic;
-}
-
-header img {
-  float: left;
-  margin: 0 30px;
-  width: clamp(40px, 15%, 66px);
-}
-
-/* ================================
-   NAVIGATION BAR
-================================ */
+/* NAVIGATION */
 .navbar {
-  background-color: var(--primary-color);
+  background: var(--primary);
   position: relative;
 }
 
-/* hide checkbox inputs */
-#menu-toggle, #submenu-toggle {
-  display: none;
-}
+/* Hide checkbox */
+#menu-toggle { display: none; }
 
-/* links list */
-.navbar ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-/* all nav links */
-.navbar a, .submenu-label {
-  display: block;
-  padding: 0.75em;
-  text-decoration: none;
-  color: var(--light);
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.navbar a:hover, .submenu-label:hover {
-  background-color: var(--accent-color);
-  color: var(--primary-color);
-}
-
-.current {
-  color: var(--accent-color);
-  font-weight: bold;
-}
-
-/* hamburger button */
+/* Menu button */
 .menu-btn {
   display: block;
-  color: var(--light);
-  padding: .75em;
-  font-size: 1.75em;
+  color: var(--white);
+  padding: 1em;
+  font-size: 1.5em;
   cursor: pointer;
 }
+.menu-btn::before { content: "\2630"; } /* hamburger */
+#menu-toggle:checked + .menu-btn::before { content: "\2715"; } /* × */
 
-.menu-btn::before {
-  content: "\2630"; /* ☰ */
-}
-
-#menu-toggle:checked + .menu-btn::before {
-  content: "\2715"; /* × */
-}
-
-/* menu styling for mobile */
 .menu {
   display: none;
   flex-direction: column;
-  background-color: var(--primary-color);
+  background: var(--primary);
 }
-
 #menu-toggle:checked + .menu-btn + .menu {
   display: flex;
 }
 
-/* submenu styling */
+.menu li { position: relative; }
+.menu a {
+  color: var(--white);
+  text-decoration: none;
+  padding: 0.75em 1em;
+  display: block;
+}
+.menu a:hover {
+  background: var(--accent);
+  color: var(--primary);
+}
+.menu a.current {
+  color: var(--accent);
+  font-weight: bold;
+}
+
+/* Submenu (hidden by default) */
 .submenu {
   display: none;
   flex-direction: column;
-  background-color: var(--primary-color);
-  padding-left: 1em;
+  position: static;
+  background: var(--primary);
+}
+.has-submenu > a::after {
+  content: " ▶";
+  font-size: 0.8em;
 }
 
-/* show submenu when checkbox checked */
-#submenu-toggle:checked + .submenu-label + .submenu {
+/* Show submenu on hover (desktop) */
+.has-submenu:hover .submenu {
   display: flex;
 }
 
-/* add triangle indicators */
-.submenu-label::after {
-  content: " ▶";
-  font-size: .8em;
-}
-
-#submenu-toggle:checked + .submenu-label::after {
-  content: " ▼";
-}
-
-/* ================================
-   MAIN LAYOUT
-================================ */
+/* MAIN LAYOUT */
 main {
   display: flex;
   flex-direction: column;
-  gap: 1em;
   padding: 1em;
 }
 
-section h1 { color: var(--primary-color); }
+section h1 { color: var(--primary); }
 
 article img {
   float: left;
-  margin: .25em 1em 1em 0;
-  border: 1px solid var(--dark);
+  margin: 0 1em 1em 0;
   width: min(100%, 225px);
+  border: 1px solid var(--black);
 }
 
-aside h2 { color: var(--primary-color); }
-aside blockquote { font-style: italic; }
+aside {
+  margin-top: 1em;
+}
+aside h2 { color: var(--primary); }
+blockquote { font-style: italic; }
 
-/* ================================
-   FOOTER
-================================ */
+/* FOOTER */
 footer {
-  background-color: var(--primary-color);
-  color: white;
+  background: var(--primary);
+  color: var(--white);
   text-align: center;
   padding: 1em;
 }
 
-/* ================================
-   MEDIA QUERY – DESKTOP
-================================ */
+/* MEDIA QUERY: Larger screens */
 @media (min-width: 700px) {
-  header { text-align: left; }
-  main { flex-direction: row; }
-  section { flex: 3; }
-  aside { flex: 1; }
-
-  /* horizontal nav */
   .menu-btn { display: none; }
+
   .menu {
     display: flex !important;
     flex-direction: row;
@@ -210,25 +141,33 @@ footer {
     position: relative;
   }
 
-  .submenu-label {
-    padding: 0.75em;
+  /* Submenu drops down below parent */
+  .submenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: var(--primary);
+    min-width: 180px;
+    z-index: 1000;
   }
 
-  /* submenu dropdown for desktop */
-  .submenu {
-    position: absolute;
-    left: 0;
-    top: 100%;
-    display: none;
-    width: 200px;
-    padding-left: 0;
+  .has-submenu > a::after {
+    content: " ▼";
   }
 
   .has-submenu:hover .submenu {
-    display: block;
+    display: flex;
   }
 
-  .submenu-label::after {
-    content: " ▼";
+  main {
+    flex-direction: row;
+  }
+
+  section {
+    flex: 3;
+  }
+  aside {
+    flex: 1;
   }
 }
