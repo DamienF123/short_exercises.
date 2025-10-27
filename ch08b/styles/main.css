@@ -1,4 +1,6 @@
-/* variables */
+/* ================================
+   VARIABLES
+================================ */
 :root {
     --primary-color: #931420;
     --accent-color: #f6bb73;
@@ -7,14 +9,18 @@
     --dark: black;
 }
 
-/* reset */
+/* ================================
+   RESET
+================================ */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* default styles */
+/* ================================
+   DEFAULT STYLES
+================================ */
 body {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 100%;
@@ -31,7 +37,9 @@ h2 { font-size: 120%; }
 h3 { font-size: 110%; }
 a:focus, a:hover { font-style: italic; }
 
-/* header styles */
+/* ================================
+   HEADER
+================================ */
 header {
     border-bottom: 3px solid var(--primary-color);
     background-image: linear-gradient(30deg, 
@@ -60,17 +68,23 @@ header img {
     width: clamp(40px, 15%, 66px);
 }
 
-/* main layout */
+/* ================================
+   MAIN LAYOUT
+================================ */
 main {
     clear: left;
     display: flex;
     flex-direction: column;
 }
 
-/* section styles */
+/* ================================
+   SECTION
+================================ */
 section h1 { color: var(--primary-color); }
 
-/* article styles */
+/* ================================
+   ARTICLE
+================================ */
 article {
     padding-top: .5em;
     margin-bottom: .5em;
@@ -83,12 +97,16 @@ article img {
     width: min(100%, 225px);
 }
 
-/* aside styles */
+/* ================================
+   ASIDE
+================================ */
 aside h2 { color: var(--primary-color); }
 aside img { margin-bottom: .9em; }
 aside blockquote { font-style: italic; margin-left: .5em; }
 
-/* footer styles */
+/* ================================
+   FOOTER
+================================ */
 footer {
     background-color: var(--primary-color);
 }
@@ -99,23 +117,38 @@ footer p {
     padding-bottom: 0;
 }
 
-/* navigation styles */
+/* ================================
+   NAVIGATION BAR
+================================ */
 .navbar {
     background-color: var(--primary-color);
     position: relative;
 }
 
+/* Hide checkbox input */
+#menu-toggle {
+    display: none;
+}
+
+/* Navigation list styles */
 .navbar ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
 }
 
+/* Nav links */
 .navbar a {
     display: block;
     padding: .75em;
     text-decoration: none;
     color: var(--light);
+    transition: background-color 0.3s ease;
+}
+
+.navbar a:hover {
+    background-color: var(--accent-color);
+    color: var(--primary-color);
 }
 
 .navbar a.current {
@@ -125,26 +158,48 @@ footer p {
 
 .navbar a.current:hover { font-style: normal; }
 
-/* hamburger menu button */
+/* ================================
+   MENU BUTTON (HAMBURGER)
+================================ */
 .menu-btn {
     display: block;
     cursor: pointer;
-    font-size: 1.5em;
+    font-size: 1.75em;
     color: var(--light);
     padding: .75em;
+    transition: transform 0.3s ease;
 }
 
-/* menu layout */
+/* Change icon when checked */
+#menu-toggle:checked + .menu-btn::before {
+    content: '\2715'; /* × symbol for close */
+    font-size: 1.5em;
+}
+.menu-btn::before {
+    content: '\2630'; /* ☰ hamburger icon */
+}
+
+/* ================================
+   MENU LAYOUT (MOBILE FIRST)
+================================ */
 .menu {
     display: none;
     flex-direction: column;
+    background-color: var(--primary-color);
+    transition: max-height 0.4s ease;
 }
 
+.menu li {
+    position: relative;
+}
+
+/* Triangle for submenu items */
 .menu li:has(.submenu) > a::after {
-    content: '\25B6'; /* right triangle */
+    content: '\25B6'; /* ▶ right triangle */
     margin-left: .25em;
 }
 
+/* Submenu styling */
 .submenu {
     position: absolute;
     left: 100%;
@@ -156,16 +211,19 @@ footer p {
     z-index: 1000;
 }
 
+/* Show submenu on hover (mobile & desktop) */
 .menu li:has(.submenu):hover > .submenu {
     display: block;
 }
 
-/* show menu when checkbox checked */
+/* Show main menu when checkbox checked */
 #menu-toggle:checked + .menu-btn + .menu {
     display: flex;
 }
 
-/* media query for larger screens */
+/* ================================
+   MEDIA QUERY – LARGER SCREENS
+================================ */
 @media only screen and (min-width: 620px) {
     header { text-align: left; }
 
@@ -174,27 +232,39 @@ footer p {
     section { order: 2; flex-basis: 75%; }
     aside { order: 1; flex-basis: 25%; }
 
-    /* horizontal menu */
+    /* Horizontal navigation */
     .menu {
         display: flex !important;
         flex-direction: row;
     }
 
-    .menu-btn { display: none; }
+    .menu li {
+        position: relative;
+    }
 
-    /* submenu triangle down */
+    .menu li a {
+        padding: 1em;
+    }
+
+    /* Hide hamburger menu */
+    .menu-btn {
+        display: none;
+    }
+
+    /* Change triangle to down arrow for submenus */
     .menu li:has(.submenu) > a::after {
-        content: '\25BC'; /* down triangle */
+        content: '\25BC'; /* ▼ down triangle */
         margin-left: .25em;
     }
 
+    /* Submenu displays below parent */
     .menu li:has(.submenu):hover > .submenu {
         display: block;
         left: 0;
         top: 100%;
     }
 
-    /* ensure horizontal menu if checkbox checked */
+    /* Keep horizontal layout if checkbox is checked */
     #menu-toggle:checked + .menu-btn + .menu {
         display: flex;
         flex-direction: row;
