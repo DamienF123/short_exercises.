@@ -14,7 +14,7 @@
 	box-sizing: border-box;
 }
 
-/* the default styles for the elements */
+/* default styles */
 body {
 	font-family: Arial, Helvetica, sans-serif;
     font-size: 100%;
@@ -29,7 +29,7 @@ h2 { font-size: 120%; }
 h3 { font-size: 110%; }
 a:focus, a:hover { font-style: italic; }
 
-/* the styles for the header */
+/* header styles */
 header {
 	border-bottom: 3px solid var(--primary-color);
 	background-image: linear-gradient(30deg, 
@@ -54,77 +54,116 @@ header {
 	}
 }
 
-/* the styles for the main element */
+/* main styles - mobile first */
 main {
 	clear: left;
 	display: flex;
+	flex-direction: column; /* stack vertically for mobile */
 }
 
-/* the styles for the section */
-section {
-	order: 2;
-	flex-basis: 75%;
-	& h1 {
-		color: var(--primary-color);
-		margin: 0;
-	}
+/* section styles */
+section h1 {
+	color: var(--primary-color);
+	margin: 0;
 }
 
-/* the styles for the article */
-article {
-	& img {
-		float: left;
-		margin: .25em 1em 1em 0;
-		border: 1px solid var(--dark);
-		width: min(100%, 250px);
-	}
+/* article styles */
+article img {
+	float: left;
+	margin: .25em 1em 1em 0;
+	border: 1px solid var(--dark);
+	width: min(100%, 250px);
 }
 
-/* the styles for the aside */
-aside {
-	order: 1;
-	flex-basis: 25%;
-	& h2 {
-		color: var(--primary-color);
-	}
-	& img {
-		margin-bottom: .9em;
-	}
+/* aside styles */
+aside img {
+	float: left;
+	margin: .25em 1em 1em 0;
+	border: 1px solid var(--dark);
+	width: min(100%, 250px);
 }
 
-/* the styles for the footer */
+/* aside styles */
+article img {
+	float: left;
+	margin: .25em 1em 1em 0;
+	border: 1px solid var(--dark);
+	width: min(100%, 250px);
+}
+
+
+/* aside styles */
+aside h2 {
+	color: var(--primary-color);
+}
+aside img {
+	margin-bottom: .9em;
+}
+
+/* footer styles */
 footer {
 	background-color: var(--primary-color);
-	& p {
-		text-align: center;
-		color: white;
-		padding-bottom: 0; 
+}
+footer p {
+	text-align: center;
+	color: white;
+	padding-bottom: 0;
+}
+
+/* nav styles */
+nav {
+	display: flex;
+	flex-direction: column;
+	list-style: none;
+}
+nav a {
+	display: block;
+	padding: .75em;
+	text-decoration: none;
+	font-weight: bold;
+	color: var(--light);
+}
+nav a {
+	display: block;
+	padding: .75em;
+	text-decoration: none;
+	font-weight: bold;
+	color: var(--light);
+}
+nav a:hover {
+	color: var(--accent-color);
+}
+nav a.current {
+	background-color: var(--accent-color);
+	color: var(--dark);
+}
+nav a.current:hover {
+	font-style: normal;
+}
+
+/* Hide the second heading on very small screens */
+header h3 {
+	display: none;
+}
+
+/* Display h3 when width >= 480px */
+@media screen and (min-width: 480px) {
+	header h3 {
+		display: block;
 	}
 }
 
-/* the styles for the navigation menu */
-nav {
-	background-color: var(--primary-color);
-	& ul { 
-		display: flex;
-		flex-direction: column;
-		list-style: none;
+/* Tablet and larger (>=768px) */
+@media screen and (min-width: 768px) {
+	main {
+		flex-direction: row; /* side-by-side layout */
 	}
-	& a {
-		display: block;
-		padding: .75em;
-		text-decoration: none;
-		font-weight: bold;
-		color: var(--light);
+	section {
+		order: 2;
+		flex-basis: 75%;
 	}
-	& a:hover {
-		color: var(--accent-color);
-	}
-	& a.current {
-		background-color: var(--accent-color);
-		color: var(--dark);
-	}
-	& a.current:hover { 
-		font-style: normal; /* override default hover effect */
+	aside {
+		order: 1;
+		flex-basis: 25%;
 	}
 }
