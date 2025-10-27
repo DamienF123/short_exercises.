@@ -1,78 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8" />
-  <title>San Joaquin Valley Town Hall</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="shortcut icon" href="images/favicon.ico" />
-  <link rel="stylesheet" href="styles.css" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>San Joaquin Valley Town Hall</title>
+<link rel="stylesheet" href="styles.css" />
 </head>
-
 <body>
-  <header>
-    <img src="images/town_hall_logo.png" alt="Town Hall logo" />
-    <div>
-      <h1>San Joaquin Valley Town Hall</h1>
-      <h2>Celebrating our <span>75<sup>th</sup></span> Year</h2>
-    </div>
-  </header>
+<header>
+  <img src="images/town_hall_logo.png" alt="Town Hall logo" />
+  <div>
+    <h1>San Joaquin Valley Town Hall</h1>
+    <h2>Celebrating our <span>75<sup>th</sup></span> Year</h2>
+  </div>
+</header>
 
-  <nav class="navbar">
-    <input type="checkbox" id="menu-toggle" />
-    <label for="menu-toggle" class="menu-btn" aria-label="Toggle menu"></label>
+<nav>
+  <input type="checkbox" id="menu-toggle" />
+  <label for="menu-toggle" class="menu-btn" aria-label="Toggle menu"></label>
+  <ul class="menu" role="menubar">
+    <li><a href="#" class="current" role="menuitem">Home</a></li>
+    <li><a href="#" role="menuitem">Tickets</a></li>
+    <li class="has-submenu" tabindex="0" aria-haspopup="true" aria-expanded="false" role="menuitem">
+      <a href="#" tabindex="-1">Speakers</a>
+      <ul class="submenu" role="menu">
+        <li><a href="#" role="menuitem">October<br /><small>David Brancaccio</small></a></li>
+        <li><a href="#" role="menuitem">November<br /><small>Andrew Ross Sorkin</small></a></li>
+        <li><a href="#" role="menuitem">January<br /><small>Amy Chua</small></a></li>
+        <li><a href="#" role="menuitem">February<br /><small>Scott Sampson</small></a></li>
+      </ul>
+    </li>
+    <li><a href="#" role="menuitem">About Us</a></li>
+    <li><a href="#" role="menuitem">Contact Us</a></li>
+  </ul>
+</nav>
 
-    <ul class="menu">
-      <li><a href="#" class="current">Home</a></li>
-      <li><a href="#">Tickets</a></li>
-      <li class="has-submenu">
-        <a href="#">Speakers <span class="arrow"></span></a>
-        <ul class="submenu">
-          <li><a href="#">October<br /><small>David Brancaccio</small></a></li>
-          <li><a href="#">November<br /><small>Andrew Ross Sorkin</small></a></li>
-          <li><a href="#">January<br /><small>Amy Chua</small></a></li>
-          <li><a href="#">February<br /><small>Scott Sampson</small></a></li>
-        </ul>
-      </li>
-      <li><a href="#">About Us</a></li>
-      <li><a href="#">Contact Us</a></li>
-    </ul>
-  </nav>
+<main>
+  <aside>
+    <h2>Our Mission</h2>
+    <p>San Joaquin Valley Town Hall is a non-profit organization that is run by an all-volunteer board of directors. Our mission is to bring nationally and internationally renowned, thought-provoking speakers who inform, educate, and entertain our audience! As one of our members told us:</p>
+    <blockquote>“Each year I give a ticket package to each of our family members. I think of it as the gift of knowledge...and that is priceless.”</blockquote>
+  </aside>
 
-  <main>
-    <aside>
-      <h2>Our Mission</h2>
-      <p>
-        San Joaquin Valley Town Hall is a non-profit organization that is run by an all-volunteer board of
-        directors. Our mission is to bring nationally and internationally renowned, thought-provoking speakers
-        who inform, educate, and entertain our audience! As one of our members told us:
-      </p>
-      <blockquote>
-        “Each year I give a ticket package to each of our family members. I think of it as the gift of
-        knowledge...and that is priceless.”
-      </blockquote>
-    </aside>
+  <section>
+    <h2>Speaker of the Month</h2>
+    <article>
+      <h3>February: Scott Sampson</h3>
+      <h4>Fossil Threads in the Web of Life</h4>
+      <img src="images/sampson_dinosaur.jpg" alt="Scott Sampson with dinosaur" />
+      <p>What's 75 million years old and brand spanking new? A teenage Utahceratops! Come to the Saroyan, armed with your best dinosaur roar, when Scott Sampson, Research Curator at the Utah Museum of Natural History, steps to the podium. Sampson's research has focused on the ecology and evolution of late Cretaceous dinosaurs and he has conducted fieldwork in a number of countries in Africa.</p>
+      <p><a href="#">Read more.</a> <strong>Or meet us there!</strong></p>
+    </article>
+  </section>
+</main>
 
-    <section>
-      <h2>Speaker of the Month</h2>
-      <article>
-        <h3>February: Scott Sampson</h3>
-        <h4>Fossil Threads in the Web of Life</h4>
-        <img src="images/sampson_dinosaur.jpg" alt="Scott Sampson with dinosaur" />
-        <p>
-          What's 75 million years old and brand spanking new? A teenage Utahceratops! Come to the Saroyan, armed
-          with your best dinosaur roar, when Scott Sampson, Research Curator at the Utah Museum of Natural History,
-          steps to the podium. Sampson's research has focused on the ecology and evolution of late Cretaceous dinosaurs
-          and he has conducted fieldwork in a number of countries in Africa.
-        </p>
-        <p><a href="#">Read more.</a> <strong>Or meet us there!</strong></p>
-      </article>
-    </section>
-  </main>
+<footer>
+  &copy; San Joaquin Valley Town Hall, Fresno, CA 93755
+</footer>
 
-  <footer>
-    <p>&copy; San Joaquin Valley Town Hall, Fresno, CA 93755</p>
-  </footer>
+<script>
+  // Toggle submenu on mobile when clicking "Speakers"
+  document.querySelectorAll('.has-submenu').forEach(item => {
+    item.addEventListener('click', e => {
+      e.preventDefault();
+      item.classList.toggle('open');
+      const expanded = item.getAttribute('aria-expanded') === 'true';
+      item.setAttribute('aria-expanded', !expanded);
+    });
+  });
+</script>
+
 </body>
-
 </html>
