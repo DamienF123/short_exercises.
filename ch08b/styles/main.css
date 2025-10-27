@@ -170,14 +170,12 @@ footer p {
     transition: transform 0.3s ease;
 }
 
-/* Change icon when checked */
-#menu-toggle:checked + .menu-btn::before {
-    content: '\2715'; /* × symbol for close */
-    font-size: 1.5em;
-}
-
 .menu-btn::before {
     content: '\2630'; /* ☰ hamburger icon */
+}
+
+#menu-toggle:checked + .menu-btn::before {
+    content: '\2715'; /* × symbol for close */
 }
 
 /* ================================
@@ -187,16 +185,15 @@ footer p {
     display: none;
     flex-direction: column;
     background-color: var(--primary-color);
-    transition: max-height 0.4s ease;
 }
 
 .menu li {
     position: relative;
 }
 
-/* Triangle for submenu items */
+/* Right triangle for submenus */
 .menu li:has(.submenu) > a::after {
-    content: '\25B6'; /* ▶ right triangle */
+    content: '\25B6'; /* ▶ */
     margin-left: .25em;
 }
 
@@ -212,12 +209,12 @@ footer p {
     z-index: 1000;
 }
 
-/* Show submenu on hover (mobile & desktop) */
+/* Show submenu on hover */
 .menu li:has(.submenu):hover > .submenu {
     display: block;
 }
 
-/* Show main menu when checkbox checked */
+/* Show main menu when checked */
 #menu-toggle:checked + .menu-btn + .menu {
     display: flex;
 }
@@ -239,10 +236,6 @@ footer p {
         flex-direction: row;
     }
 
-    .menu li {
-        position: relative;
-    }
-
     .menu li a {
         padding: 1em;
     }
@@ -252,9 +245,9 @@ footer p {
         display: none;
     }
 
-    /* Change triangle to down arrow for submenus */
+    /* Change triangle to down arrow */
     .menu li:has(.submenu) > a::after {
-        content: '\25BC'; /* ▼ down triangle */
+        content: '\25BC'; /* ▼ */
         margin-left: .25em;
     }
 
@@ -265,7 +258,7 @@ footer p {
         top: 100%;
     }
 
-    /* Keep horizontal layout if checkbox is checked */
+    /* Keep horizontal layout if checked */
     #menu-toggle:checked + .menu-btn + .menu {
         display: flex;
         flex-direction: row;
