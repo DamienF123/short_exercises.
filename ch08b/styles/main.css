@@ -175,6 +175,7 @@ footer p {
     content: '\2715'; /* × symbol for close */
     font-size: 1.5em;
 }
+
 .menu-btn::before {
     content: '\2630'; /* ☰ hamburger icon */
 }
