@@ -82,6 +82,10 @@ aside {
 	padding: 1em;
 }
 
+aside h2 {
+	color: var(--light); /* white heading for contrast */
+}
+
 article img {
 	margin-bottom: .9em;
 }
