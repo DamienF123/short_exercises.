@@ -16,22 +16,28 @@
 		<h3>Celebrating our <span class="shadow">75<sup>th</sup></span> Year</h3>
 	</header>
 
-	<!-- Navigation -->
+	<!-- NAVIGATION -->
 	<nav class="navbar">
+		<!-- Main toggle -->
 		 <input type="checkbox" id="menu-toggle">
 		 <label for="menu-toggle" class="menu-btn"></label>
 
 		<ul class="menu">
 			<li><a class="current">Home</a></li>
 			<li><a href="#">Tickets</a></li>
-			<li><a href="#">Speakers<small>&#9660;</small></a>
+
+			<!-- Speakers submenu with toggle -->
+			<li class="has-submenu">
+				<input type="checkbox" id="submenu-toggle">
+				<label for="submenu-toggle" class="submenu-label">Speakers</label>
 				<ul class="submenu">
 					<li><a href="#">October<br>David Brancaccio</a></li>
-					<li><a href="#">November<br>Andrew Ross Sorkin</a></li>
-					<li><a href="#">January<br>Amy Chua</a></li>
-					<li><a href="#">February<br>Scott Sampson</a></li>
+          			<li><a href="#">November<br>Andrew Ross Sorkin</a></li>
+          			<li><a href="#">January<br>Amy Chua</a></li>
+          			<li><a href="#">February<br>Scott Sampson</a></li>
 				</ul>
 			</li>
+			
 			<li><a href="#">About Us</a></li>
 			<li><a href="#">Contact Us</a></li>
 		</ul>

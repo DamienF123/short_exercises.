@@ -7,11 +7,7 @@
 }
 
 /* RESET */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
   font-family: Arial, sans-serif;
@@ -41,10 +37,10 @@ header h3 { font-style: italic; }
   position: relative;
 }
 
-/* Hide checkbox */
-#menu-toggle { display: none; }
+/* hide checkboxes */
+#menu-toggle, #submenu-toggle { display: none; }
 
-/* Menu button */
+/* menu button */
 .menu-btn {
   display: block;
   color: var(--white);
@@ -55,6 +51,7 @@ header h3 { font-style: italic; }
 .menu-btn::before { content: "\2630"; } /* hamburger */
 #menu-toggle:checked + .menu-btn::before { content: "\2715"; } /* × */
 
+/* base menu */
 .menu {
   display: none;
   flex-direction: column;
@@ -64,14 +61,15 @@ header h3 { font-style: italic; }
   display: flex;
 }
 
-.menu li { position: relative; }
-.menu a {
-  color: var(--white);
-  text-decoration: none;
-  padding: 0.75em 1em;
+.menu a, .submenu-label {
   display: block;
+  padding: 0.75em 1em;
+  text-decoration: none;
+  color: var(--white);
+  transition: background 0.3s;
+  cursor: pointer;
 }
-.menu a:hover {
+.menu a:hover, .submenu-label:hover {
   background: var(--accent);
   color: var(--primary);
 }
@@ -80,27 +78,33 @@ header h3 { font-style: italic; }
   font-weight: bold;
 }
 
-/* Submenu (hidden by default) */
+/* Submenu */
 .submenu {
   display: none;
   flex-direction: column;
-  position: static;
   background: var(--primary);
-}
-.has-submenu > a::after {
-  content: " ▶";
-  font-size: 0.8em;
+  padding-left: 1em;
 }
 
-/* Show submenu on hover (desktop) */
-.has-submenu:hover .submenu {
+/* indicator */
+.submenu-label::after {
+  content: " ▶";
+  font-size: .8em;
+}
+
+/* toggle submenu on mobile */
+#submenu-toggle:checked + .submenu-label::after {
+  content: " ▼";
+}
+#submenu-toggle:checked + .submenu-label + .submenu {
   display: flex;
 }
 
-/* MAIN LAYOUT */
+/* MAIN */
 main {
   display: flex;
   flex-direction: column;
+  gap: 1em;
   padding: 1em;
 }
 
@@ -113,9 +117,6 @@ article img {
   border: 1px solid var(--black);
 }
 
-aside {
-  margin-top: 1em;
-}
 aside h2 { color: var(--primary); }
 blockquote { font-style: italic; }
 
@@ -127,21 +128,31 @@ footer {
   padding: 1em;
 }
 
-/* MEDIA QUERY: Larger screens */
+/* MEDIA QUERY – desktop layout */
 @media (min-width: 700px) {
-  .menu-btn { display: none; }
+  /* two-column layout with aside first */
+  main {
+    flex-direction: row;
+  }
+  aside { order: 1; flex: 1; }
+  section { order: 2; flex: 3; }
 
+  /* horizontal nav */
+  .menu-btn { display: none; }
   .menu {
     display: flex !important;
     flex-direction: row;
     justify-content: center;
   }
 
-  .menu li {
-    position: relative;
+  .menu li { position: relative; }
+
+  /* change indicator to ▼ */
+  .submenu-label::after {
+    content: " ▼";
   }
 
-  /* Submenu drops down below parent */
+  /* show submenu on hover */
   .submenu {
     display: none;
     position: absolute;
@@ -152,22 +163,7 @@ footer {
     z-index: 1000;
   }
 
-  .has-submenu > a::after {
-    content: " ▼";
-  }
-
   .has-submenu:hover .submenu {
     display: flex;
-  }
-
-  main {
-    flex-direction: row;
-  }
-
-  section {
-    flex: 3;
-  }
-  aside {
-    flex: 1;
   }
 }
