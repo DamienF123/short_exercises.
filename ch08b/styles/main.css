@@ -24,14 +24,13 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 100%;
-  width: 80%;
-  margin: auto;
+  max-width: 1200px;
+  margin: 0 auto;
   border: 3px solid var(--primary-color);
 }
 
 header, section, aside, footer { padding: 1em; }
 h1, h2, h3, p, article, blockquote { padding-bottom: .5em; }
-ul { margin-left: 1em; }
 h1 { font-size: 150%; }
 h2 { font-size: 120%; }
 h3 { font-size: 110%; }
@@ -54,7 +53,6 @@ header {
 header h2 {
   font-size: 175%;
   color: var(--primary-color);
-  padding-bottom: 0;
 }
 
 header h3 {
@@ -69,54 +67,6 @@ header img {
 }
 
 /* ================================
-   MAIN LAYOUT
-================================ */
-main {
-  clear: left;
-  display: flex;
-  flex-direction: column;
-}
-
-/* ================================
-   SECTION
-================================ */
-section h1 { color: var(--primary-color); }
-
-/* ================================
-   ARTICLE
-================================ */
-article {
-  padding-top: .5em;
-  margin-bottom: .5em;
-}
-
-article img {
-  float: left;
-  margin: .25em 1em 1em 0;
-  border: 1px solid var(--dark);
-  width: min(100%, 225px);
-}
-
-/* ================================
-   ASIDE
-================================ */
-aside h2 { color: var(--primary-color); }
-aside blockquote { font-style: italic; margin-left: .5em; }
-
-/* ================================
-   FOOTER
-================================ */
-footer {
-  background-color: var(--primary-color);
-}
-
-footer p {
-  text-align: center;
-  color: white;
-  padding-bottom: 0;
-}
-
-/* ================================
    NAVIGATION BAR
 ================================ */
 .navbar {
@@ -124,48 +74,45 @@ footer p {
   position: relative;
 }
 
-/* Hide checkbox input */
-#menu-toggle {
+/* hide checkbox inputs */
+#menu-toggle, #submenu-toggle {
   display: none;
 }
 
-/* Navigation list styles */
+/* links list */
 .navbar ul {
-  list-style-type: none;
-  margin: 0;
+  list-style: none;
   padding: 0;
+  margin: 0;
 }
 
-/* Nav links */
-.navbar a {
+/* all nav links */
+.navbar a, .submenu-label {
   display: block;
-  padding: .75em;
+  padding: 0.75em;
   text-decoration: none;
   color: var(--light);
-  transition: background-color 0.3s ease;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
-.navbar a:hover {
+.navbar a:hover, .submenu-label:hover {
   background-color: var(--accent-color);
   color: var(--primary-color);
 }
 
-.navbar a.current {
+.current {
   color: var(--accent-color);
   font-weight: bold;
 }
 
-.navbar a.current:hover { font-style: normal; }
-
-/* ================================
-   MENU BUTTON (HAMBURGER)
-================================ */
+/* hamburger button */
 .menu-btn {
   display: block;
-  cursor: pointer;
-  font-size: 1.75em;
   color: var(--light);
   padding: .75em;
+  font-size: 1.75em;
+  cursor: pointer;
 }
 
 .menu-btn::before {
@@ -176,81 +123,112 @@ footer p {
   content: "\2715"; /* × */
 }
 
-/* ================================
-   MENU LAYOUT (MOBILE FIRST)
-================================ */
+/* menu styling for mobile */
 .menu {
   display: none;
   flex-direction: column;
   background-color: var(--primary-color);
 }
 
-.menu li {
-  position: relative;
-}
-
-/* Submenu styles */
-.submenu {
-  position: absolute;
-  left: 100%;
-  top: 0;
-  background-color: var(--primary-color);
-  display: none;
-  z-index: 999;
-}
-
-/* Right arrow for submenus */
-.has-submenu > a::after {
-  content: " ▶";
-  font-size: .8em;
-}
-
-/* Show submenu on hover */
-.has-submenu:hover .submenu {
-  display: block;
-}
-
-/* Show main menu when checkbox checked */
 #menu-toggle:checked + .menu-btn + .menu {
   display: flex;
 }
 
+/* submenu styling */
+.submenu {
+  display: none;
+  flex-direction: column;
+  background-color: var(--primary-color);
+  padding-left: 1em;
+}
+
+/* show submenu when checkbox checked */
+#submenu-toggle:checked + .submenu-label + .submenu {
+  display: flex;
+}
+
+/* add triangle indicators */
+.submenu-label::after {
+  content: " ▶";
+  font-size: .8em;
+}
+
+#submenu-toggle:checked + .submenu-label::after {
+  content: " ▼";
+}
+
 /* ================================
-   MEDIA QUERY – LARGER SCREENS
+   MAIN LAYOUT
 ================================ */
-@media only screen and (min-width: 620px) {
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  padding: 1em;
+}
+
+section h1 { color: var(--primary-color); }
+
+article img {
+  float: left;
+  margin: .25em 1em 1em 0;
+  border: 1px solid var(--dark);
+  width: min(100%, 225px);
+}
+
+aside h2 { color: var(--primary-color); }
+aside blockquote { font-style: italic; }
+
+/* ================================
+   FOOTER
+================================ */
+footer {
+  background-color: var(--primary-color);
+  color: white;
+  text-align: center;
+  padding: 1em;
+}
+
+/* ================================
+   MEDIA QUERY – DESKTOP
+================================ */
+@media (min-width: 700px) {
   header { text-align: left; }
-
   main { flex-direction: row; }
+  section { flex: 3; }
+  aside { flex: 1; }
 
-  section { order: 2; flex-basis: 75%; }
-  aside { order: 1; flex-basis: 25%; }
-
-  /* Horizontal navigation */
+  /* horizontal nav */
+  .menu-btn { display: none; }
   .menu {
     display: flex !important;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: center;
   }
 
-  .menu li { position: relative; }
-
-  /* Hide hamburger menu */
-  .menu-btn { display: none; }
-
-  /* Down arrow for submenus */
-  .has-submenu > a::after {
-    content: " ▼";
+  .menu li {
+    position: relative;
   }
 
-  /* Submenu below parent */
-  .has-submenu:hover .submenu {
-    display: block;
+  .submenu-label {
+    padding: 0.75em;
+  }
+
+  /* submenu dropdown for desktop */
+  .submenu {
+    position: absolute;
     left: 0;
     top: 100%;
+    display: none;
+    width: 200px;
+    padding-left: 0;
   }
 
-  #menu-toggle:checked + .menu-btn + .menu {
-    display: flex;
+  .has-submenu:hover .submenu {
+    display: block;
+  }
+
+  .submenu-label::after {
+    content: " ▼";
   }
 }
