@@ -62,34 +62,31 @@ main {
 	gap: 1rem;
 }
 
-/* section (mobile)*/
+/* Mobile order: section first, aside second */
 section {
-	order: 1; /* main content appears first (top) */
-	& h1 {
-		color: var(--primary-color);
-		margin: 0;
-	}
+	order: 1;
 }
-
-/* Article */
-article {
-	& img {
-		float: left;
-		margin: .25em 1em 1em 0;
-		border: 1px solid var(--dark);
-		width: min(100%, 250px);
-	}
-}
-
-/* Aside (mobile) */
 aside {
-	order: 2; /* guest speakers appear second (bottom) */
-	& h2 {
-		color: var(--primary-color);
-	}
-	& img {
-		margin-bottom: .9em;
-	}
+	order: 2;
+}
+
+section h1 {
+	color: var(--primary-color);
+	margin: 0;
+}
+
+article img {
+	float: left;
+	margin: 0.25em 1em 1em 0;
+	border: 1px solid var(--dark);
+	width: min(100%, 250px);
+}
+
+aside h2 {
+	color: var(--primary-color);
+}
+aside img {
+	margin-bottom: 0.9em;
 }
 
 /* ========== FOOTER ========== */
@@ -131,34 +128,33 @@ nav {
 
 /* ========== RESPOSNSIVE STYLES ========== */
 
-/* Step 8: Hide the second heading on small screens */
+/*Hide the second heading (h2) in header on small screens */
 header h2 {
 	display: none;
 }
 
-/* Step 7: Show the second heading when screen is wide enough (adjust if needed) */
+/* Show header h2 once there's enough space */
 @media screen and (min-width: 500px) {
 	header h2 {
 		display: block;
 	}	
 }
 
-/* Step 3 & 4: Tablet and larger screens (≥768px) */
+/* Tablet and up */
 @media screen and (min-width: 768px) {
 	main {
 		flex-direction: row; /* side by side */
 	}
 
-	/* Move Main Section to RIGHT */
-	section {
-		order: 2;
-		flex-basis: 75%;
-	}
-
-	/* Move Guest Speakers (aside) to the LEFT */
+	/* Guest Speakers on the LEFT */
 	aside {
 		order: 1;
 		flex-basis: 25%;
 	}
-	
+
+	/* Main content on the RIGHT */
+	section {
+		order: 2;
+		flex-basis: 75%;
+	}
 }
