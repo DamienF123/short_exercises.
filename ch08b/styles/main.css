@@ -1,169 +1,248 @@
+/* ===========================================
+   VARIABLES
+=========================================== */
 :root {
-  --primary: #931420;
-  --accent: #f6bb73;
+  --primary-color: #931420;
+  --accent-color: #f6bb73;
   --light-accent: #fffded;
   --white: #fff;
   --black: #000;
 }
 
-/* RESET */
-* { margin: 0; padding: 0; box-sizing: border-box; }
-
-body {
-  font-family: Arial, sans-serif;
-  line-height: 1.5;
-  margin: 0 auto;
-  max-width: 1200px;
-  border: 3px solid var(--primary);
+/* ===========================================
+   RESET
+=========================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* HEADER */
+/* ===========================================
+   BODY AND BASE
+=========================================== */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  max-width: 1200px;
+  margin: 0 auto;
+  border: 3px solid var(--primary-color);
+  background-color: var(--light-accent);
+  line-height: 1.5;
+}
+
+header, section, aside, footer { padding: 1em; }
+
+/* ===========================================
+   HEADER
+=========================================== */
 header {
+  border-bottom: 3px solid var(--primary-color);
+  background-image: linear-gradient(
+    30deg,
+    var(--accent-color) 0%,
+    var(--light-accent) 25%,
+    var(--white) 50%,
+    var(--light-accent) 75%,
+    var(--accent-color) 100%
+  );
   text-align: center;
-  background: linear-gradient(30deg, var(--accent), var(--light-accent), var(--white));
-  border-bottom: 3px solid var(--primary);
-  padding: 1em;
+}
+
+header img {
+  float: left;
+  margin: 0 30px;
+  width: clamp(40px, 15%, 66px);
 }
 
 header h2 {
-  color: var(--primary);
-  font-size: 1.75em;
+  font-size: 175%;
+  color: var(--primary-color);
 }
-header h3 { font-style: italic; }
 
-/* NAVIGATION */
+header h3 {
+  font-size: 130%;
+  font-style: italic;
+}
+
+/* ===========================================
+   NAVIGATION BAR
+=========================================== */
 .navbar {
-  background: var(--primary);
+  background-color: var(--primary-color);
   position: relative;
 }
 
-/* hide checkboxes */
-#menu-toggle, #submenu-toggle { display: none; }
+/* Hide checkbox */
+#menu-toggle {
+  display: none;
+}
 
-/* menu button */
+/* Hamburger button */
 .menu-btn {
   display: block;
   color: var(--white);
   padding: 1em;
-  font-size: 1.5em;
+  font-size: 1.75em;
   cursor: pointer;
 }
-.menu-btn::before { content: "\2630"; } /* hamburger */
-#menu-toggle:checked + .menu-btn::before { content: "\2715"; } /* × */
+.menu-btn::before {
+  content: "\2630"; /* ☰ */
+}
+#menu-toggle:checked + .menu-btn::before {
+  content: "\2715"; /* × */
+}
 
-/* base menu */
+/* Menu base (mobile first) */
 .menu {
   display: none;
   flex-direction: column;
-  background: var(--primary);
+  background-color: var(--primary-color);
 }
 #menu-toggle:checked + .menu-btn + .menu {
   display: flex;
 }
 
-.menu a, .submenu-label {
+.menu li {
+  position: relative;
+}
+.menu a {
   display: block;
+  color: var(--white);
   padding: 0.75em 1em;
   text-decoration: none;
-  color: var(--white);
-  transition: background 0.3s;
-  cursor: pointer;
 }
-.menu a:hover, .submenu-label:hover {
-  background: var(--accent);
-  color: var(--primary);
+.menu a:hover {
+  background-color: var(--accent-color);
+  color: var(--primary-color);
 }
 .menu a.current {
-  color: var(--accent);
+  color: var(--accent-color);
   font-weight: bold;
 }
 
-/* Submenu */
+/* Submenu (mobile hidden by default) */
 .submenu {
   display: none;
   flex-direction: column;
-  background: var(--primary);
+  background-color: var(--primary-color);
   padding-left: 1em;
 }
-
-/* indicator */
-.submenu-label::after {
+.has-submenu > a::after {
   content: " ▶";
-  font-size: .8em;
+  font-size: 0.8em;
 }
-
-/* toggle submenu on mobile */
-#submenu-toggle:checked + .submenu-label::after {
-  content: " ▼";
-}
-#submenu-toggle:checked + .submenu-label + .submenu {
+.has-submenu:hover > .submenu {
   display: flex;
 }
 
-/* MAIN */
+/* ===========================================
+   MAIN CONTENT
+=========================================== */
 main {
   display: flex;
   flex-direction: column;
   gap: 1em;
   padding: 1em;
+  background-color: var(--white);
 }
 
-section h1 { color: var(--primary); }
+section h1 {
+  color: var(--primary-color);
+  margin-bottom: 0.5em;
+}
 
 article img {
   float: left;
   margin: 0 1em 1em 0;
-  width: min(100%, 225px);
   border: 1px solid var(--black);
+  width: min(100%, 225px);
 }
 
-aside h2 { color: var(--primary); }
-blockquote { font-style: italic; }
+aside {
+  background-color: var(--light-accent);
+  border: 1px solid var(--accent-color);
+  padding: 1em;
+}
 
-/* FOOTER */
+aside h2 {
+  color: var(--primary-color);
+  margin-bottom: 0.5em;
+}
+
+aside blockquote {
+  font-style: italic;
+  margin-top: 0.5em;
+}
+
+/* ===========================================
+   FOOTER
+=========================================== */
 footer {
-  background: var(--primary);
+  background-color: var(--primary-color);
   color: var(--white);
   text-align: center;
   padding: 1em;
 }
 
-/* MEDIA QUERY – desktop layout */
+/* ===========================================
+   DESKTOP VIEW
+=========================================== */
 @media (min-width: 700px) {
-  /* two-column layout with aside first */
+  header {
+    text-align: left;
+  }
+
   main {
     flex-direction: row;
+    gap: 1em;
   }
-  aside { order: 1; flex: 1; }
-  section { order: 2; flex: 3; }
+
+  aside {
+    order: 1;
+    flex: 1;
+  }
+
+  section {
+    order: 2;
+    flex: 3;
+  }
 
   /* horizontal nav */
-  .menu-btn { display: none; }
+  .menu-btn {
+    display: none;
+  }
+
   .menu {
     display: flex !important;
     flex-direction: row;
     justify-content: center;
   }
 
-  .menu li { position: relative; }
-
-  /* change indicator to ▼ */
-  .submenu-label::after {
-    content: " ▼";
+  .menu li {
+    position: relative;
   }
 
-  /* show submenu on hover */
+  .menu a {
+    padding: 1em 1.25em;
+  }
+
+  .has-submenu > a::after {
+    content: " ▼";
+    margin-left: 0.25em;
+  }
+
+  /* Dropdown submenu for desktop */
   .submenu {
     display: none;
     position: absolute;
     top: 100%;
     left: 0;
-    background: var(--primary);
-    min-width: 180px;
+    background-color: var(--primary-color);
+    width: 200px;
     z-index: 1000;
   }
 
-  .has-submenu:hover .submenu {
+  .has-submenu:hover > .submenu {
     display: flex;
   }
 }
