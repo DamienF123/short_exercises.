@@ -1,5 +1,5 @@
 /* ===========================
-   CSS VARIABLES
+   VARIABLES
 =========================== */
 :root {
 	--primary-color: #931420;
@@ -19,7 +19,7 @@
 }
 
 /* ===========================
-   DEFAULT STYLES
+   BASE STYLES
 =========================== */
 body {
 	font-family: Arial, Helvetica, sans-serif;
@@ -61,144 +61,4 @@ header {
 header h2 {
 	font-size: 175%;
 	color: var(--primary-color);
-	padding-bottom: 0;
-}
-
-header h3 {
-	font-size: 130%;
-	font-style: italic;
-}
-
-header img {
-	float: left;
-	margin: 0 30px;
-	width: clamp(40px, 15%, 66px);
-}
-
-/* ===========================
-   MAIN - MOBILE FIRST
-=========================== */
-main {
-	clear: left;
-	display: flex;
-	flex-direction: column; /* stack vertically on mobile */
-}
-
-/* ===========================
-   SECTION
-=========================== */
-section h1 {
-	color: var(--primary-color);
-	margin: 0;
-}
-
-/* ===========================
-   ARTICLE
-=========================== */
-article img {
-	float: left;
-	margin: .25em 1em 1em 0;
-	border: 1px solid var(--dark);
-	width: min(100%, 250px);
-}
-
-/* ===========================
-   ASIDE (GUEST SPEAKERS)
-=========================== */
-aside {
-	background-color: var(--light); /* keep sidebar light */
-	color: var(--dark);
-	padding: 1em;
-}
-
-aside h2 {
-	color: var(--primary-color);
-	margin-bottom: 0.5em;
-}
-
-aside img {
-	margin-bottom: .9em;
-}
-
-/* ===========================
-   NAVIGATION (INSIDE ASIDE)
-=========================== */
-nav {
-	background-color: var(--light); /* matches sidebar */
-}
-
-nav ul {
-	list-style: none;
-	padding: 0;
-	margin: 0;
-}
-
-/* Each menu item */
-nav a {
-	display: block;
-	padding: .75em;
-	text-decoration: none;
-	font-weight: bold;
-	background-color: var(--primary-color); /* primary color background */
-	color: var(--light); /* white text */
-	border-bottom: 1px solid var(--light-accent);
-}
-
-/* Hover and active effects */
-nav a:hover {
-	background-color: var(--accent-color);
-	color: var(--dark);
-}
-
-nav a.current {
-	background-color: var(--accent-color);
-	color: var(--dark);
-}
-
-nav a.current:hover {
-	font-style: normal;
-}
-
-/* ===========================
-   FOOTER
-=========================== */
-footer {
-	background-color: var(--primary-color);
-}
-
-footer p {
-	text-align: center;
-	color: var(--light);
-	padding-bottom: 0;
-}
-
-/* ===========================
-   RESPONSIVE DESIGN
-=========================== */
-
-/* Hide the second heading on very small screens */
-header h3 {
-	display: none;
-}
-
-/* Show h3 when width >= 480px */
-@media screen and (min-width: 480px) {
-	header h3 {
-		display: block;
-	}
-}
-
-/* Tablet and larger (>=768px) */
-@media screen and (min-width: 768px) {
-	main {
-		flex-direction: row; /* side-by-side layout */
-	}
-	section {
-		order: 2;
-		flex-basis: 75%;
-	}
-	aside {
-		order: 1;
-		flex-basis: 25%;
-	}
-}
+	padding-b
