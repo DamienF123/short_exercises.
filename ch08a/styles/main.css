@@ -1,4 +1,6 @@
-/* variables */
+/* ===========================
+   CSS VARIABLES
+=========================== */
 :root {
 	--primary-color: #931420;
 	--accent-color: #f6bb73;
@@ -7,29 +9,45 @@
 	--dark: black;
 }
 
-/* reset */
+/* ===========================
+   RESET
+=========================== */
 * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
 }
 
-/* default styles */
+/* ===========================
+   DEFAULT STYLES
+=========================== */
 body {
 	font-family: Arial, Helvetica, sans-serif;
-    font-size: 100%;
-    width: 80%;
-    margin: auto;
-    border: 3px solid var(--primary-color);
+	font-size: 100%;
+	width: 80%;
+	margin: auto;
+	border: 3px solid var(--primary-color);
 }
-header, section, aside, footer { padding: 1em; }
-h1, h2, h3, p, article { padding-bottom: .5em; }
+
+header, section, aside, footer {
+	padding: 1em;
+}
+
+h1, h2, h3, p, article {
+	padding-bottom: .5em;
+}
+
 h1 { font-size: 150%; }
 h2 { font-size: 120%; }
 h3 { font-size: 110%; }
-a:focus, a:hover { font-style: italic; }
 
-/* header */
+a:focus, a:hover {
+	font-style: italic;
+}
+
+/* ===========================
+   HEADER
+=========================== */
 header {
 	border-bottom: 3px solid var(--primary-color);
 	background-image: linear-gradient(30deg, 
@@ -38,36 +56,45 @@ header {
 		var(--light) 50%, 
 		var(--light-accent) 75%, 
 		var(--accent-color) 100%);
-	& h2 {
-		font-size: 175%;
-		color: var(--primary-color);
-		padding-bottom: 0;
-	}
-	& h3 {
-		font-size: 130%;
-		font-style: italic;
-	}
-	& img {
-		float: left;
-		margin: 0 30px;
-		width: clamp(40px, 15%, 66px);
-	}
 }
 
-/* main - mobile first */
+header h2 {
+	font-size: 175%;
+	color: var(--primary-color);
+	padding-bottom: 0;
+}
+
+header h3 {
+	font-size: 130%;
+	font-style: italic;
+}
+
+header img {
+	float: left;
+	margin: 0 30px;
+	width: clamp(40px, 15%, 66px);
+}
+
+/* ===========================
+   MAIN - MOBILE FIRST
+=========================== */
 main {
 	clear: left;
 	display: flex;
-	flex-direction: column; /* stack vertically for mobile */
+	flex-direction: column; /* stack vertically on mobile */
 }
 
-/* section */
+/* ===========================
+   SECTION
+=========================== */
 section h1 {
 	color: var(--primary-color);
 	margin: 0;
 }
 
-/* article */
+/* ===========================
+   ARTICLE
+=========================== */
 article img {
 	float: left;
 	margin: .25em 1em 1em 0;
@@ -75,65 +102,86 @@ article img {
 	width: min(100%, 250px);
 }
 
-/* aside */
+/* ===========================
+   ASIDE (GUEST SPEAKERS)
+=========================== */
 aside {
-	background-color: var(--primary-color); /* red background */
-	color: var(--light); /* make all text white by default */
+	background-color: var(--light); /* keep sidebar light */
+	color: var(--dark);
 	padding: 1em;
 }
 
 aside h2 {
-	color: var(--light); /* white heading for contrast */
+	color: var(--primary-color);
+	margin-bottom: 0.5em;
 }
 
-article img {
+aside img {
 	margin-bottom: .9em;
 }
 
-/* footer */
+/* ===========================
+   NAVIGATION (INSIDE ASIDE)
+=========================== */
+nav {
+	background-color: var(--light); /* matches sidebar */
+}
+
+nav ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+/* Each menu item */
+nav a {
+	display: block;
+	padding: .75em;
+	text-decoration: none;
+	font-weight: bold;
+	background-color: var(--primary-color); /* primary color background */
+	color: var(--light); /* white text */
+	border-bottom: 1px solid var(--light-accent);
+}
+
+/* Hover and active effects */
+nav a:hover {
+	background-color: var(--accent-color);
+	color: var(--dark);
+}
+
+nav a.current {
+	background-color: var(--accent-color);
+	color: var(--dark);
+}
+
+nav a.current:hover {
+	font-style: normal;
+}
+
+/* ===========================
+   FOOTER
+=========================== */
 footer {
 	background-color: var(--primary-color);
 }
 
 footer p {
 	text-align: center;
-	color: white;
+	color: var(--light);
 	padding-bottom: 0;
 }
 
-/* nav */
-nav {
-	background-color: var(--primary-color);
-}
-nav ul {
-	display: block;
-	flex-direction: column;
-	list-style: none;
-}
-nav a {
-	display: block;
-	padding: .75em;
-	text-decoration: none;
-	font-weight: bold;
-	color: var(--light);
-}
-nav a:hover {
-	color: var(--accent-color);
-}
-nav a.current {
-	background-color: var(--accent-color);
-	color: var(--dark);
-}
-nav a.current:hover {
-	font-style: normal;
-}
+/* ===========================
+   RESPONSIVE DESIGN
+=========================== */
 
 /* Hide the second heading on very small screens */
 header h3 {
 	display: none;
 }
 
-/* Show it when width >= 480px */
+/* Show h3 when width >= 480px */
 @media screen and (min-width: 480px) {
 	header h3 {
 		display: block;
@@ -143,7 +191,7 @@ header h3 {
 /* Tablet and larger (>=768px) */
 @media screen and (min-width: 768px) {
 	main {
-		flex-direction: row;
+		flex-direction: row; /* side-by-side layout */
 	}
 	section {
 		order: 2;
