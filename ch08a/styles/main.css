@@ -1,4 +1,4 @@
-/* variables */
+/* ========== variables ========== */
 :root {
 	--primary-color: #931420;
 	--accent-color: #f6bb73;
@@ -7,14 +7,14 @@
 	--dark: black;
 }
 
-/* reset */
+/* ========== reset ========== */
 * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
 }
 
-/* the default styles for the elements */
+/* ========== BASE STYLES ========== */
 body {
 	font-family: Arial, Helvetica, sans-serif;
     font-size: 100%;
@@ -29,7 +29,7 @@ h2 { font-size: 120%; }
 h3 { font-size: 110%; }
 a:focus, a:hover { font-style: italic; }
 
-/* the styles for the header */
+/* ========== HEADER ========== */
 header {
 	border-bottom: 3px solid var(--primary-color);
 	background-image: linear-gradient(30deg, 
@@ -54,13 +54,15 @@ header {
 	}
 }
 
-/* the styles for the main element */
+/* ========== MAIN LAYOUT (MOBILE FIRST) ========== */
 main {
 	clear: left;
 	display: flex;
+	flex-direction: column; /* stack vertically on mobile */
+	gap: 1rem;
 }
 
-/* the styles for the section */
+/* section */
 section {
 	order: 2;
 	flex-basis: 75%;
@@ -70,7 +72,6 @@ section {
 	}
 }
 
-/* the styles for the article */
 article {
 	& img {
 		float: left;
@@ -80,7 +81,7 @@ article {
 	}
 }
 
-/* the styles for the aside */
+/* Aside */
 aside {
 	order: 1;
 	flex-basis: 25%;
@@ -92,7 +93,7 @@ aside {
 	}
 }
 
-/* the styles for the footer */
+/* ========== FOOTER ========== */
 footer {
 	background-color: var(--primary-color);
 	& p {
@@ -102,7 +103,7 @@ footer {
 	}
 }
 
-/* the styles for the navigation menu */
+/* ========== NAVIGATION ========== */
 nav {
 	background-color: var(--primary-color);
 	& ul { 
@@ -127,4 +128,36 @@ nav {
 	& a.current:hover { 
 		font-style: normal; /* override default hover effect */
 	}
+}
+
+/* ========== RESPOSNSIVE STYLES ========== */
+
+/* Step 8: Hide the second heading on small screens */
+header h2 {
+	display: none;
+}
+
+/* Step 7: Show the second heading when screen is wide enough */
+@media screen and (min-width: 500px) {
+	header h2 {
+		display: block;
+	}	
+}
+
+/* Step 3 & 4: Tablet and larger screens */
+@media screen and (min-width: 768px) {
+	main {
+		flex-direction: row; /* side by side */
+	}
+
+	section {
+		order: 1;
+		flex-basis: 75%;
+	}
+
+	aside {
+		order: 2;
+		flex-basis: 25%;
+	}
+	
 }
