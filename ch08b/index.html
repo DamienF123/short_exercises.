@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-	
 <head>
 	<meta charset="utf-8">
 	<title>San Joaquin Valley Town Hall</title>
@@ -8,7 +7,6 @@
 	<link rel="shortcut icon" href="images/favicon.ico">
 	<link rel="stylesheet" href="styles/main.css">
 </head>
-
 <body>
 	<header>
 		<img src="images/town_hall_logo.png" alt="Town Hall logo" width="66">
@@ -17,15 +15,17 @@
 	</header>
 
 	<nav class="navbar">
-		<!-- Checkbox and label for hamburger menu -->
+		<!-- Menu Toggle -->
 		 <input type="checkbox" id="menu-toggle">
 		 <label for="menu-toggle" class="menu-btn">&#9776;</label>
 
 		<ul class="menu">
 			<li><a class="current" href="#">Home</a></li>
 			<li><a href="#">Tickets</a></li>
-			</li>
-				<a href="#">Speakers</a>
+			</li class="has-submenu">
+				<!-- Submenu toggle for mobile -->
+				<input type="checkbox" id="submenu-toggle">
+				<label for="submenu-toggle" class="submenu-label">Speakers</label>
 				<ul class="submenu">
 					<li><a href="#">October<br>David Brancaccio</a></li>
 					<li><a href="#">November<br>Andrew Ross Sorkin</a></li>
