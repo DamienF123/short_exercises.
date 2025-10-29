@@ -64,7 +64,6 @@ header h3 {
   display: none;
 }
 
-/* Hamburger */
 .menu-btn {
   display: block;
   cursor: pointer;
@@ -77,12 +76,11 @@ header h3 {
   content: "\2630"; /* ☰ */
 }
 
-/* When checked, show X */
 #menu-toggle:checked + .menu-btn::before {
   content: "\2715"; /* ✕ */
 }
 
-/* Menu layout (mobile default) */
+/* Menu layout */
 .menu {
   display: none;
   flex-direction: column;
@@ -111,40 +109,24 @@ header h3 {
   background-color: #b52b38;
 }
 
-.has-submenu > a::after {
-  content: " \25B6"; /* ▶ */
-}
-
 .has-submenu:hover > .submenu {
   display: flex;
   flex-direction: column;
 }
 
-.has-submenu:hover > a::after {
-  content: " \25BC"; /* ▼ */
-}
-
-/* Main layout */
+/* Main layout (mobile first) */
 main {
   display: flex;
-  flex-direction: column; /* column by default (small screens) */
+  flex-direction: column;
   clear: left;
 }
 
-article img {
-  float: left;
-  margin: 0.25em 1em 1em 0;
-  border: 1px solid var(--dark);
-  width: min(100%, 225px);
+section {
+  order: 1;
 }
 
-aside h2 {
-  color: var(--primary-color);
-}
-
-aside blockquote {
-  font-style: italic;
-  margin-left: 0.5em;
+aside {
+  order: 2;
 }
 
 /* Footer */
@@ -188,7 +170,6 @@ footer {
     align-items: center;
   }
 
-  /* Submenu positioning under parent link */
   .has-submenu {
     position: relative;
   }
@@ -196,9 +177,8 @@ footer {
   .submenu {
     position: absolute;
     top: 100%;
-    left: 0; /* make it drop directly under */
+    left: 0;
     display: none;
-    flex-direction: column;
     background-color: #b52b38;
     z-index: 1000;
     min-width: 200px;
@@ -206,10 +186,5 @@ footer {
 
   .has-submenu:hover > .submenu {
     display: flex;
-  }
-
-  /* Downward triangle for desktop */
-  .has-submenu > a::after {
-    content: " \25BC"; /* ▼ */
   }
 }
