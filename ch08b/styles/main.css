@@ -85,7 +85,6 @@ article img {
 
 /* aside styles */
 aside h2 { color: var(--primary-color); }
-aside img { margin-bottom: .9em; }
 aside blockquote { font-style: italic; margin-left: .5em; }
 
 /* footer styles */
@@ -125,7 +124,7 @@ footer p {
 
 .navbar a.current:hover { font-style: normal; }
 
-/* hamburger menu button */
+/* menu button (hamburger/clase) */
 .menu-btn {
     display: block;
     cursor: pointer;
@@ -134,12 +133,18 @@ footer p {
     padding: .75em;
 }
 
-/* menu layout */
+/* hide checkbox */
+#menu-toggle {
+    display: none;
+}
+
+/* menu layout (small screens) */
 .menu {
     display: none;
     flex-direction: column;
 }
 
+/* submenu triangle for small screens */
 .menu li:has(.submenu) > a::after {
     content: '\25B6'; /* right triangle */
     margin-left: .25em;
@@ -156,11 +161,15 @@ footer p {
     z-index: 1000;
 }
 
+/* show submenu on hover */
 .menu li:has(.submenu):hover > .submenu {
     display: block;
 }
 
 /* show menu when checkbox checked */
+#menu-toggle:checked + menu-btn::before {
+    content: '\2715'; /* close symbol (x) */
+}
 #menu-toggle:checked + .menu-btn + .menu {
     display: flex;
 }
@@ -178,6 +187,7 @@ footer p {
     .menu {
         display: flex !important;
         flex-direction: row;
+        justify-content: space-around;
     }
 
     .menu-btn { display: none; }
@@ -188,6 +198,7 @@ footer p {
         margin-left: .25em;
     }
 
+    /* submenu drops down istead of to the right */
     .menu li:has(.submenu):hover > .submenu {
         display: block;
         left: 0;
