@@ -13,7 +13,7 @@
   box-sizing: border-box;
 }
 
-/* Base styles */
+/* Base */
 body {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 100%;
@@ -54,7 +54,7 @@ header h3 {
   font-size: 130%;
 }
 
-/* Navigation */
+/* Navbar */
 .navbar {
   background-color: var(--primary-color);
   position: relative;
@@ -64,7 +64,7 @@ header h3 {
   display: none;
 }
 
-/* Hamburger button */
+/* Hamburger */
 .menu-btn {
   display: block;
   cursor: pointer;
@@ -73,11 +73,24 @@ header h3 {
   padding: 0.75em;
 }
 
-/* Menu hidden by default */
+.menu-btn::before {
+  content: "\2630"; /* ☰ */
+}
+
+/* When checked, show X */
+#menu-toggle:checked + .menu-btn::before {
+  content: "\2715"; /* ✕ */
+}
+
+/* Menu layout (mobile default) */
 .menu {
   display: none;
   flex-direction: column;
   background-color: var(--primary-color);
+}
+
+#menu-toggle:checked + .menu-btn + .menu {
+  display: flex;
 }
 
 .menu a {
@@ -90,11 +103,6 @@ header h3 {
 .menu a.current {
   color: var(--accent-color);
   font-weight: bold;
-}
-
-/* Show menu when checked */
-#menu-toggle:checked + .menu-btn + .menu {
-  display: flex;
 }
 
 /* Submenu */
@@ -110,17 +118,16 @@ header h3 {
 .has-submenu:hover > .submenu {
   display: flex;
   flex-direction: column;
-  position: relative;
 }
 
 .has-submenu:hover > a::after {
   content: " \25BC"; /* ▼ */
 }
 
-/* Main content */
+/* Main layout */
 main {
   display: flex;
-  flex-direction: column;
+  flex-direction: column; /* column by default (small screens) */
   clear: left;
 }
 
@@ -148,12 +155,13 @@ footer {
   padding: 1em;
 }
 
-/* Larger screens */
+/* ---------- DESKTOP VIEW ---------- */
 @media (min-width: 620px) {
   header {
     text-align: left;
   }
 
+  /* Make main content two-column on desktop */
   main {
     flex-direction: row;
   }
@@ -168,6 +176,7 @@ footer {
     flex-basis: 25%;
   }
 
+  /* Horizontal navbar */
   .menu-btn {
     display: none;
   }
@@ -179,24 +188,27 @@ footer {
     align-items: center;
   }
 
+  /* Submenu positioning under parent link */
+  .has-submenu {
+    position: relative;
+  }
+
   .submenu {
     position: absolute;
-    display: none;
     top: 100%;
-    left: 0;
+    left: 0; /* make it drop directly under */
+    display: none;
+    flex-direction: column;
     background-color: #b52b38;
     z-index: 1000;
     min-width: 200px;
   }
 
-  .has-submenu {
-    position: relative;
-  }
-
   .has-submenu:hover > .submenu {
-    display: block;
+    display: flex;
   }
 
+  /* Downward triangle for desktop */
   .has-submenu > a::after {
     content: " \25BC"; /* ▼ */
   }
