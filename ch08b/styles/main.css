@@ -83,7 +83,7 @@ header h3 {
   content: "\2715"; /* ✕ */
 }
 
-/* Menu layout (mobile first) */
+/* Menu layout (mobile default) */
 .menu {
   display: none;
   flex-direction: column;
@@ -138,7 +138,7 @@ header h3 {
   padding-left: 2em;
 }
 
-/* Main layout (mobile first) */
+/* Layout for mobile first */
 main {
   display: flex;
   flex-direction: column;
@@ -162,12 +162,12 @@ footer {
 }
 
 /* ---------- DESKTOP VIEW ---------- */
-@media (min-width: 620px) {
+@media (min-width: 768px) {
   header {
     text-align: left;
   }
 
-  /* Two-column layout */
+  /* Two-column layout on large screens */
   main {
     flex-direction: row;
   }
@@ -234,7 +234,7 @@ footer {
     display: flex;
   }
 
-  /* Keep horizontal even if checkbox checked */
+  /* Keep menu visible if checkbox checked (failsafe) */
   #menu-toggle:checked + .menu-btn + .menu {
     display: flex;
   }
