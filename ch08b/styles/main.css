@@ -60,10 +60,12 @@ header h3 {
   position: relative;
 }
 
+/* Hide checkbox */
 #menu-toggle {
   display: none;
 }
 
+/* Menu button (hamburger / close) */
 .menu-btn {
   display: block;
   cursor: pointer;
@@ -80,7 +82,7 @@ header h3 {
   content: "\2715"; /* ✕ */
 }
 
-/* Menu layout */
+/* Menu layout (mobile default) */
 .menu {
   display: none;
   flex-direction: column;
@@ -112,6 +114,18 @@ header h3 {
 .has-submenu:hover > .submenu {
   display: flex;
   flex-direction: column;
+  position: absolute;
+  left: 100%;
+  top: 0;
+  z-index: 1000;
+}
+
+/* Right-pointing arrow for mobile */
+.has-submenu > a::after {
+  content: "▶";
+  float: right;
+  margin-left: 5px;
+  font-size: 0.8em;
 }
 
 /* Main layout (mobile first) */
@@ -143,7 +157,7 @@ footer {
     text-align: left;
   }
 
-  /* Make main content two-column on desktop */
+  /* Two-column layout */
   main {
     flex-direction: row;
   }
@@ -170,6 +184,13 @@ footer {
     align-items: center;
   }
 
+  /* Down arrow for submenu in desktop view */
+  .has-submenu > a::after {
+    content: "▼";
+    margin-left: 5px;
+    font-size: 0.7em;
+  }
+
   .has-submenu {
     position: relative;
   }
@@ -185,6 +206,12 @@ footer {
   }
 
   .has-submenu:hover > .submenu {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Ensure menu stays horizontal even when checkbox is checked */
+  #menu-toggle:checked + .menu-btn + .menu {
     display: flex;
   }
 }
