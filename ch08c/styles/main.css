@@ -14,7 +14,7 @@
 	box-sizing: border-box;
 }
 
-/* the default styles for the elements */
+/* base */
 body {
 	font-family: Arial, Helvetica, sans-serif;
     font-size: 100%;
@@ -30,7 +30,7 @@ h2 { font-size: 120%; }
 h3 { font-size: 110%; }
 a:focus, a:hover { font-style: italic; }
 
-/* the styles for the header */
+/* header */
 header {
 	border-bottom: 3px solid var(--primary-color);
 	background-image: linear-gradient(30deg, 
@@ -55,13 +55,13 @@ header {
 	}
 }
 
-/* the styles for the main element */
+/* main layout */
 main {
 	clear: left;
 	display: flex;
 }
 
-/* the styles for the section */
+/* section */
 section {
 	flex-basis: 75%;
 	& h1 {
@@ -75,7 +75,7 @@ section {
 	}
 }
 
-/* the styles for the article */
+/* article */
 article {
 	padding-top: .5em;
 	margin-bottom: .5em;
@@ -87,14 +87,11 @@ article {
 	}
 }
 
-/* the styles for the aside */
+/* aside */
 aside {
 	flex-basis: 25%;
 	& h2 {
 		color: var(--primary-color);
-	}
-	& img {
-		margin-bottom: .9em;
 	}
 	& blockquote {
 		font-style: italic;
@@ -102,7 +99,7 @@ aside {
 	}
 }
 
-/* the styles for the footer */
+/* footer */
 footer {
 	background-color: var(--primary-color);
 	& p {
@@ -112,12 +109,15 @@ footer {
 	}
 }
 
-/* the styles for the navigation menu */
+/* navbar */
 .navbar {
 	background-color: var(--primary-color);
+	container-type: inline-size;
+	position: relative;
 	& ul {
 		list-style-type: none;
 		margin: 0;
+		padding: 0;
 	}
 	& a {
 		display: block;
@@ -134,8 +134,66 @@ footer {
 	}
 }
 
+/* menu layout default (flex for wide screens) */
 .menu {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-evenly;
+}
+
+/* responsive hamburger setup */
+.menu-btm {
+	font-display: none;
+	font-size: 2em;
+	color: var(--light);
+	padding: .5em .75em;
+	cursor: pointer;
+	user-select: none;
+}
+.menu-btm ::before {
+	content: "\2630"; /* hamburger symbol */
+}
+.navbar input[type="checkbox"] {
+	display: none;
+}
+
+/* small screen default: hide menu */
+.navbar .menu {
+	display: none;
+	flex-direction: column;
+	background-color: var(--primary-color);
+	width: 100%;
+	position: absolute;
+	top: 100%;
+	left: 0;
+	z-index: 1000;
+}
+
+/* show menu when checked */
+.navbar input[type="checkbox"]:checked ~ .menu {
+	display: flex;
+}
+
+/* change to hamburger to close */
+.navbar input[type="checkbox"]:checked + .menu-btn::before {
+	content: "✖";
+}
+
+/* show hamburger on small screens */
+.menu-btn {
+	display: block;
+}
+
+/* container query for larger widths */
+@container (min-width: 560px) {
+	.menu-btn {
+		display: none;
+	}
+
+	.navbar .menu {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-evenly;
+		position: static;
+	}
 }
