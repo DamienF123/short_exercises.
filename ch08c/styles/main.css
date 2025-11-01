@@ -134,7 +134,7 @@ footer {
 	}
 }
 
-/* menu layout default (flex for wide screens) */
+/* default menu layout */
 .menu {
 	display: flex;
 	flex-wrap: wrap;
@@ -177,11 +177,6 @@ footer {
 /* change to hamburger to close */
 .navbar input[type="checkbox"]:checked + .menu-btn::before {
 	content: "✖";
-}
-
-/* show hamburger on small screens */
-.menu-btn {
-	display: block;
 }
 
 /* container query for larger widths */
