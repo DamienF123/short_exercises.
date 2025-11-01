@@ -59,6 +59,7 @@ header {
 main {
 	clear: left;
 	display: flex;
+	flex-wrap: wrap;
 }
 
 /* section */
@@ -112,7 +113,6 @@ footer {
 /* navbar */
 .navbar {
 	background-color: var(--primary-color);
-	container-type: inline-size;
 	position: relative;
 	& ul {
 		list-style-type: none;
@@ -157,38 +157,25 @@ footer {
 	display: none;
 }
 
-/* small screen default: hide menu */
-.navbar .menu {
-	display: none;
-	flex-direction: column;
-	background-color: var(--primary-color);
-	width: 100%;
-	position: absolute;
-	top: 100%;
-	left: 0;
-	z-index: 1000;
-}
-
-/* show menu when checked */
-.navbar input[type="checkbox"]:checked ~ .menu {
-	display: flex;
-}
-
-/* change to hamburger to close */
-.navbar input[type="checkbox"]:checked + .menu-btn::before {
-	content: "✖";
-}
-
-/* container query for larger widths */
-@container (min-width: 560px) {
+/* responsive layout for small screens */
+@media (max-width: 560px) {
 	.menu-btn {
-		display: none;
+		display: block;
 	}
-
 	.navbar .menu {
-		display: flex;
-		flex-direction: row;
-		justify-content: space-evenly;
-		position: static;
+		display: none;
+		flex-direction: column;
+		background-color: var(--primary-color);
+		width: 100%;
+		position: absolute;
+		top: 100%;
+		left: 0;
+		z-index: 1000;
 	}
+	.navbar input[type="checkbox"]:checked ~ .menu {
+		display: flex;
+	}
+	.navbar input[type="checkbox"]:checked ~ .menu-btn::before {
+		content: "✖";
+	}	
 }
